@@ -2,14 +2,36 @@
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
+projectTask = {
+    // id: Int32Array,
+    // title: $(''),
+    // desc: $(''),
+    // dueDate: $(''),
+    // taskStatus: $('')
+}
+
+
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
-
+    idCount = 0
+    if (projectTask.id === NaN || projectTask.id === null) {
+        projectTask.id = idCount
+        idCount += 1
+        console.log(projectTask.id)
+    }
 }
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
+    document.createElement('card')
 
+    taskCard = {
+        id: $(''),
+        title: $(''),
+        desc: $(''),
+        dueDate: $(''),
+        taskStatus: $('')
+    }
 }
 
 // Todo: create a function to render the task list and make cards draggable
