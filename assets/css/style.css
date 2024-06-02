@@ -24,7 +24,7 @@ body {
   border: 2px solid green;
   border-radius: 7px;
   z-index: 10;
-  background-color: rgb(192, 184, 184);
+  background-color: rgb(186, 186, 186);
   max-width: 80%;
   display: none;
 }
@@ -42,13 +42,13 @@ body {
 }
 
 .modal-header .x-button {
-  cursor: pointer;
-  font-weight: bold;
-  font-size: medium;
+  cursor: pointer
+  /* font-weight: bold;
+  font-size: medium; */
 }
 
 /* uncomment */
-.modal.active {
+/* .modal.active {
   position: fixed;
   top: 30%;
   left: 35%;
@@ -60,9 +60,9 @@ body {
   background-color: rgb(192, 184, 184);
   max-width: 80%;
   display: block;
-}
+} */
 
-.modal .not-active {
+/* .modal .not-active {
   position: fixed;
   top: 30%;
   left: 35%;
@@ -74,21 +74,19 @@ body {
   background-color: rgb(192, 184, 184);
   max-width: 80%;
   display: none;
-}
+} */
 
 .addTaskBtn {
   display: inline-block;
 }
 
-#overlay {
+/* #overlay {
   pointer-events: none;
   background-color: rgba(red, green, blue, .5);
-
-
 }
 
 #overlay.active {
   pointer-events: all;
   opacity: 1;
-}
+} */
 

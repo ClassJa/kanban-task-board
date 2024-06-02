@@ -26,6 +26,10 @@ projectTask = {
 // }
 
 
+closeModalBtn.addEventListener('click', function(event){
+    event.preventDefault
+    modalPopUp.setAttribute('style', 'display: none')
+})
 
 openModalBtn.addEventListener('click', function(event){
     event.preventDefault
@@ -34,9 +38,6 @@ openModalBtn.addEventListener('click', function(event){
     // openModalBtn.setAttribute('style', 'display: inline-block')
     // openModalBtn.setAttribute('class', 'active')
     // const modal = document.querySelector(button.dataset.modalT)
-    
-    console.log("oooo")
-
 
 })
 
