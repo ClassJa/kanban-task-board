@@ -7,6 +7,7 @@ const openModalBtn = document.querySelector('[data-bs-target]')
 const closeModalBtn = document.querySelector('[data-x-button]')
 const overlay = document.getElementById('overlay')
 const overlayActive = document.querySelector('.active')
+// const modalBackdrop = document.querySelector('.modal-backdrop')
 
 projectTask = {
     // id: Int32Array,
@@ -34,6 +35,7 @@ closeModalBtn.addEventListener('click', function(event){
 openModalBtn.addEventListener('click', function(event){
     event.preventDefault
     modalPopUp.setAttribute('style', 'display: inline-block')
+
     console.log(openModalBtn.style)
     // openModalBtn.setAttribute('style', 'display: inline-block')
     // openModalBtn.setAttribute('class', 'active')
