@@ -3,6 +3,10 @@ let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 const addTaskBtn = document.querySelector('.addTaskBtn')
 const modalPopUp = document.querySelector('.modal-pop-up')
+const openModalBtn = document.querySelector('[data-bs-target]')
+const closeModalBtn = document.querySelector('[data-x-button]')
+const overlay = document.getElementById('overlay')
+const overlayActive = document.querySelector('.active')
 
 projectTask = {
     // id: Int32Array,
@@ -22,6 +26,20 @@ projectTask = {
 // }
 
 
+
+openModalBtn.addEventListener('click', function(event){
+    event.preventDefault
+    modalPopUp.setAttribute('style', 'display: inline-block')
+    console.log(openModalBtn.style)
+    // openModalBtn.setAttribute('style', 'display: inline-block')
+    // openModalBtn.setAttribute('class', 'active')
+    // const modal = document.querySelector(button.dataset.modalT)
+    
+    console.log("oooo")
+
+
+})
+
 // TODO: Create a new card element and add the classes `card`, `project-card`, `draggable`, and `my-3`. Also add a `data-project-id` attribute and set it to the project id.
   // TODO: Create a new card header element and add the classes `card-header` and `h4`. Also set the text of the card header to the project name.
   // TODO: Create a new card body element and add the class `card-body`.
@@ -29,16 +47,17 @@ projectTask = {
   // TODO: Create a new paragraph element and add the class `card-text`. Also set the text of the paragraph to the project due date.
   // TODO: Create a new button element and add the classes `btn`, `btn-danger`, and `delete`. Also set the text of the button to "Delete" and add a `data-project-id` attribute and set it to the project id.
 
-addTaskBtn.addEventListener('click', function(event){
-    event.preventDefault
-    // open up the modal and allow for user to input content in the box's text field
-    console.log("click")
-    if (modalPopUp.display === 'none') {
-        console.log("show")
-        modalPopUp.setAttribute('.modal-pop-up', 'display-block')
-    }
-    // help 
-})
+// addTaskBtn.addEventListener('click', function(event){
+//     event.preventDefault
+//     // open up the modal and allow for user to input content in the box's text field
+//     console.log("click")
+
+//     if (modalPopUp.display === 'none') {
+//         console.log("show")
+//         modalPopUp.setAttribute('.modal-pop-up', 'display-block')
+//     }
+//     // help 
+// })
 
 
 

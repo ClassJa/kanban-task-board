@@ -24,13 +24,14 @@
     <div class="text-center mb-5">
       <button class="btn btn-success addTaskBtn" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
     </div>
-    <div class="modal-pop-up">
+    <div class="modal-pop-up" id="formModal">
       <div class="modal-header">
         <div class="title">Task</div>
-        <button class="x-button">&times;</button>
+        <button class="x-button" data-x-button >&times;</button>
       </div>
       <div class="modal-body"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ipsum nam labore cupiditate recusandae assumenda, perferendis porro voluptas nisi natus vitae. Libero in ab corporis vero, fuga recusandae voluptatem ipsa?</div>
     </div>
+    <div id="overlay" class="active"></div>
     <!-- Todo: Create a modal with a form to add tasks -->
       <!-- bootstrap to look up modal -->
     <div class="row swim-lanes text-center justify-content-between">
