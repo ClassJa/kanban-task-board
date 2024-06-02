@@ -2,6 +2,7 @@
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 const addTaskBtn = document.querySelector('.addTaskBtn')
+const modalPopUp = document.querySelector('.modal-pop-up')
 
 projectTask = {
     // id: Int32Array,
@@ -28,9 +29,15 @@ projectTask = {
   // TODO: Create a new paragraph element and add the class `card-text`. Also set the text of the paragraph to the project due date.
   // TODO: Create a new button element and add the classes `btn`, `btn-danger`, and `delete`. Also set the text of the button to "Delete" and add a `data-project-id` attribute and set it to the project id.
 
-addTaskBtn.addEventListener('click', function(){
+addTaskBtn.addEventListener('click', function(event){
+    event.preventDefault
     // open up the modal and allow for user to input content in the box's text field
     console.log("click")
+    if (modalPopUp.display === 'none') {
+        console.log("show")
+        modalPopUp.setAttribute('.modal-pop-up', 'display-block')
+    }
+    // help 
 })
 
 
