@@ -17,7 +17,8 @@ const descriptionInput = document.querySelector('.modal-body')
 const input1 = document.getElementById('input-1')
 const input2 = document.getElementById('input-2')
 const input3 = document.getElementById('task-description')
-const submitBtn = document.getElementById('task-add-btn')
+// const submitBtn = document.getElementById('task-add-btn')
+const submitBtn = document.querySelector('.btn-success')
 
 
 const todoDoDiv = document.getElementById('todo-cards')
@@ -25,41 +26,53 @@ const todoDoDiv = document.getElementById('todo-cards')
 
 
 // saves the user's input into a variable to use later and render to the screen 
-function ren() {
-    // get the user input 
-    input1.textContent = input1.value;
-    input2.textContent = input2.value;
-    input3.textContent = input3.value;
 
-}
+submitBtn.addEventListener('click', function(event){
+    // function ren() {
+        // get the user input 
+        event.preventDefault
+        input1.textContent = input1.value;
+        input2.textContent = input2.value;
+        input3.textContent = input3.value;
+    
+    // }
+}) 
+   
 
-submitBtn.addEventListener('click', ren)
+submitBtn.addEventListener('click', function(event){
+    event.preventDefault
+    // function moveToToDo() {
+        // create a div element 
+        const todoDiv =  document.createElement('div')
+        const divText = document.createElement('div')
+        const divHeader = document.createElement('h1')
+    
+        todoDiv.setAttribute('style', 'backgoround-color: black')
+    
+        todoDiv.appendChild(divText)
+        divText.appendChild(divHeader)
+    
+        divHeader.textContent = input1.value
+        todoDiv.appendChild(divText)
+    
+    
+        // todoDiv.append()
+        todoDiv.setAttribute('style', 'display: inline-block')
+        // populate the element with info from ren() function 
+        todoDiv.innerHTML = [input1.value + " " , input2.value + " " , input3.value]
+        console.log(todoDiv.textContent)
+        todoDoDiv.innerHTML = todoDiv.textContent
+    
+    // }
+})
+    
 
-submitBtn.addEventListener('click', moveToToDo)
 
-function moveToToDo() {
-    // create a div element 
-    const todoDiv =  document.createElement('div')
-    const divText = document.createElement('div')
-    const divHeader = document.createElement('h1')
+// submitBtn.addEventListener('click', ren)
 
-    todoDiv.setAttribute('style', 'backgoround-color: black')
-
-    todoDiv.appendChild(divText)
-    divText.appendChild(divHeader)
-
-    divHeader.textContent = input1.value
-    todoDiv.appendChild(divText)
+// submitBtn.addEventListener('click', moveToToDo)
 
 
-    // todoDiv.append()
-    todoDiv.setAttribute('style', 'display: inline-block')
-    // populate the element with info from ren() function 
-    todoDiv.innerHTML = [input1.value + " " , input2.value + " " , input3.value]
-    console.log(todoDiv.textContent)
-    todoDoDiv.innerHTML = todoDiv.textContent
-
-}
 
 
 // const id = document.querySelector('')
