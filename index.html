@@ -10,6 +10,7 @@
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  
 
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Task Board</title>
@@ -30,13 +31,22 @@
         <button class="x-button" data-x-button >&times;</button>
       </div>
       <div class="side-side">
-        <div>Title <input class="titleBoxInput"></div>
+        <div>Title <input type="text" class="titleBoxInput" id="input-1" ></div>
           
-        <div>Due Date <input class="dueDateBoxInput"> </div>
+
+        <!-- Refactor to use labels -->
+        <!-- <label>Due Date</label>
+        <input class="dueDateBoxInput"> -->
+
+        <div> Due Date <input type="text" class="dueDateBoxInput" id="input-2" > </div>
 
       </div>
       <div class="modal-body"> Description<textarea name="task-description" id="task-description" cols="35" rows="3"></textarea></div>
+
+      <button type="button" class="modal-add-btn" id="task-add-btn" >Add Task</button>
     </div>
+
+    <!-- create a form for the modal?? -->
     <!-- Todo: Create a modal with a form to add tasks -->
       <!-- bootstrap to look up modal -->
     <div class="row swim-lanes text-center justify-content-between">

@@ -7,6 +7,48 @@ const openModalBtn = document.querySelector('[data-bs-target]')
 const closeModalBtn = document.querySelector('[data-x-button]')
 const overlay = document.getElementById('overlay')
 const overlayActive = document.querySelector('.active')
+const datePicker = document.querySelector('.dueDateBoxInput')
+
+const titleInput = document.querySelector('.titleBoxInput')
+const dateInput = document.querySelector('.dueDateBoxInput')
+const descriptionInput = document.querySelector('.modal-body')
+
+
+const input1 = document.getElementById('input-1')
+const input2 = document.getElementById('input-2')
+const input3 = document.getElementById('task-description')
+const submitBtn = document.getElementById('task-add-btn')
+
+
+const todoDoDiv = document.getElementById('todo-cards')
+
+
+
+// saves the user's input into a variable to use later and render to the screen 
+function ren() {
+    // get the user input 
+    input1.textContent = input1.value;
+    input2.textContent = input2.value;
+    input3.textContent = input3.value;
+
+}
+
+submitBtn.addEventListener('click', ren)
+
+submitBtn.addEventListener('click', moveToToDo)
+
+function moveToToDo() {
+    // create a div element 
+    const todoDiv =  document.createElement('div')
+    // populate the element with info from ren() function 
+    todoDiv.innerHTML = [input1.value, input1.value, input3.value]
+    console.log(todoDiv.textContent)
+    todoDoDiv.innerHTML = todoDiv
+}
+
+
+// const id = document.querySelector('')
+// figure out how to access the task id
 // const modalBackdrop = document.querySelector('.modal-backdrop')
 
 projectTask = {
@@ -18,13 +60,28 @@ projectTask = {
 }
 
 
-// taskCard = {
-//     id: $(''),
-//     title: $(''),
-//     desc: $(''),
-//     dueDate: $(''),
-//     taskStatus: $('')
-// }
+const 
+
+taskCard = {
+    id: generateTaskId(),
+    title: $(''),
+    desc: $(''),
+    dueDate: $(''),
+    taskStatus: $('')
+}
+
+localStorage.getItem('titleBoxInput')
+
+console.log(titleInput.value)
+
+localStorage.getItem('dueDateBoxInput')
+
+localStorage.getItem('modal-body')
+
+$(function(){
+    $(datePicker).datePicker();
+})
+
 
 
 closeModalBtn.addEventListener('click', function(event){
@@ -74,6 +131,7 @@ function generateTaskId() {
         idCount += 1
         console.log(projectTask.id)
     }
+    return idCount
 }
 
 // Todo: create a function to create a task card
@@ -103,7 +161,15 @@ function handleAddTask(event){
 
 // Todo: create a function to handle deleting a task
 function handleDeleteTask(event){
+  const id = $(this).attr('data-project-id');
+  const projects = readProjectsFromStorage();
+  // TODO: Loop through the projects array and remove the project with the matching id.
 
+  // ? We will use our helper function to save the projects to localStorage
+  saveProjectsToStorage(projects);
+
+  // ? Here we use our other function to print projects back to the screen
+  printProjectData();
 }
 
 // Todo: create a function to handle dropping a task into a new status lane

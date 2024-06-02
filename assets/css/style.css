@@ -27,6 +27,7 @@ body {
   background-color: rgb(215, 215, 215);
   max-width: 80%;
   display: none;
+  /* justify-items: center; */
 }
 
 .modal-header {
@@ -42,7 +43,14 @@ body {
 }
 .modal-body {
   position: relative;
-  top: 10%;
+  top: 5%;
+}
+
+.modal-add-btn {
+  /* display: inline-block; */
+  /* justify-self: center; */
+
+  /* Debug how to get the submit button to be centered in its div container */
 }
 
 /* .x-button {
