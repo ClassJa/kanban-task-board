@@ -40,10 +40,25 @@ submitBtn.addEventListener('click', moveToToDo)
 function moveToToDo() {
     // create a div element 
     const todoDiv =  document.createElement('div')
+    const divText = document.createElement('div')
+    const divHeader = document.createElement('h1')
+
+    todoDiv.setAttribute('style', 'backgoround-color: black')
+
+    todoDiv.appendChild(divText)
+    divText.appendChild(divHeader)
+
+    divHeader.textContent = input1.value
+    todoDiv.appendChild(divText)
+
+
+    // todoDiv.append()
+    todoDiv.setAttribute('style', 'display: inline-block')
     // populate the element with info from ren() function 
-    todoDiv.innerHTML = [input1.value, input1.value, input3.value]
+    todoDiv.innerHTML = [input1.value + " " , input2.value + " " , input3.value]
     console.log(todoDiv.textContent)
-    todoDoDiv.innerHTML = todoDiv
+    todoDoDiv.innerHTML = todoDiv.textContent
+
 }
 
 
