@@ -14,3 +14,15 @@ body {
 .task-card:hover {
   cursor: grab;
 }
+
+.modal-pop-up {
+  position: fixed;
+  top: 30%;
+  left: 35%;
+  height: 390px;
+  width: 350px;
+  border: 2px solid green;
+  border-radius: 7px;
+  z-index: 10;
+  background-color: rgb(170, 164, 164);
+}
