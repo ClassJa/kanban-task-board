@@ -1,28 +1,42 @@
 // Retrieve tasks and nextId from localStorage
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
-const addTaskBtn = document.querySelector('.addTaskBtn')
-const modalPopUp = document.querySelector('.modal-pop-up')
+let taskTitle = JSON.parse(localStorage.getItem("taskTitle"));
+let taskDueDate = JSON.parse(localStorage.getItem("taskDueDate"));
+let taskDescription = JSON.parse(localStorage.getItem("taskDescription"));
+let = JSON.parse(localStorage.getItem(""));
+let = JSON.parse(localStorage.getItem(""));
+
+
+// const addTaskBtn = document.querySelector('.addTaskBtn')
+// const modalPopUp = document.querySelector('.modal-pop-up')
 const openModalBtn = document.querySelector('[data-bs-target]')
 const closeModalBtn = document.querySelector('[data-x-button]')
-const overlay = document.getElementById('overlay')
-const overlayActive = document.querySelector('.active')
-const datePicker = document.querySelector('.dueDateBoxInput')
+// const overlay = document.getElementById('overlay')
+// const overlayActive = document.querySelector('.active')
+// const datePicker = document.querySelector('.dueDateBoxInput')
 
-const titleInput = document.querySelector('.titleBoxInput')
-const dateInput = document.querySelector('.dueDateBoxInput')
+// const titleInput = document.querySelector('.titleBoxInput')
+// const dateInput = document.querySelector('.dueDateBoxInput')
 const descriptionInput = document.querySelector('.modal-body')
 
 
 const input1 = document.querySelector('.input-1')
 const input2 = document.querySelector('.input-2')
 const input3 = document.querySelector('.task-description')
+const taskStatus = document.querySelector('.card-title')
+
+console.log(taskStatus)
+
+// figure out how to set a status on the columns to see if they are in-progress, To-do, and done 
 
 // const input1 = document.getElementById('input-1')
 // const input2 = document.getElementById('input-2')
 // const input3 = document.getElementById('task-description')
 // const submitBtn = document.getElementById('task-add-btn')
-const submitBtn = document.querySelector('.btn-success')
+// change the class selector to have it make more sense/logical
+const submitBtn = document.querySelector('.btn-success-1')
+
 const formListener = document.getElementById('taskForm')
 
 
@@ -58,34 +72,34 @@ formListener.addEventListener('click', function(event){
 //     // }
 // }) 
 
-submitBtn.addEventListener('click', function(event){
-    event.preventDefault
-    // function moveToToDo() {
-        // create a div element 
-        const todoDiv =  document.createElement('div')
-        const divText = document.createElement('div')
-        const divHeader = document.createElement('h1')
-    
-        todoDiv.setAttribute('style', 'backgoround-color: black')
-    
-        todoDiv.appendChild(divText)
-        divText.appendChild(divHeader)
-    
-        divHeader.textContent = input1.value
-        todoDiv.appendChild(divText)
-    
-    
-        // todoDiv.append()
-        todoDiv.setAttribute('style', 'display: inline-block')
-        // populate the element with info from ren() function 
-        todoDiv.innerHTML = [input1.value + " " , input2.value + " " , input3.value]
-        console.log(todoDiv.textContent)
-        todoDoDiv.innerHTML = todoDiv.textContent
-    
-    // }
-})
-    
+// submitBtn.addEventListener('click', moveToToDo(event))
+submitBtn.click(moveToToDo)
 
+function moveToToDo(event) {
+    console.log("start the function")
+    event.preventDefault
+    // create a div element 
+    const todoDiv =  document.createElement('div')
+    const divText = document.createElement('div')
+    const divHeader = document.createElement('h1')
+
+    todoDiv.setAttribute('style', 'backgoround-color: black')
+
+    todoDiv.appendChild(divText)
+    divText.appendChild(divHeader)
+
+    divHeader.textContent = input1.value
+    todoDiv.appendChild(divText)
+
+
+    // todoDiv.append()
+    todoDiv.setAttribute('style', 'display: inline-block')
+    // populate the element with info from ren() function 
+    todoDiv.innerHTML = [input1.value + " " , input2.value + " " , input3.value]
+    console.log(todoDiv.textContent)
+    todoDoDiv.innerHTML = todoDiv.textContent
+
+}
 
 // submitBtn.addEventListener('click', ren)
 
@@ -117,9 +131,11 @@ taskCard = {
     taskStatus: $('')
 }
 
+// collect info, store it in taskList array, renderTaskList()
+
 localStorage.getItem('titleBoxInput')
 
-console.log(titleInput.value)
+// console.log(titleInput.value)
 
 localStorage.getItem('dueDateBoxInput')
 
@@ -183,16 +199,25 @@ const task = {
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
-    idCount = 0
-    if (task.id === NaN || task.id === null) {
-        task.id = idCount
-        idCount += 1
-        console.log(task.id)
+    if (nextId) {
+        nextId += 1
+        console.log(nextId)
     } else {
-        task.id = idCount += 1
+        nextId = 0
+        console.log(nextId)
     }
-    task.id = task.id
-    return task.id
+    // if (task.id === NaN || task.id === null) {
+    //     task.id = idCount
+    //     idCount += 1
+    //     console.log(task.id)
+    // } else {
+    //     task.id = idCount += 1
+    // }
+
+    // check if the nextID is in local storage increment id, if not create one starting at 0 or 1.
+    // task.id = idCount
+    // idCount += 1
+    // return task.id
 }
 
 // Todo: create a function to create a task card
@@ -201,7 +226,10 @@ function createTaskCard(task) {
     const cardHeader = $('<div>')
     cardHeader.addClass('card-header', 'draggable')
     // cardHeader.createElement('class', '.card-header')
-    cardHeader.textContent = "This is the header"
+    localStorage.setItem('taskTitle', input1)
+    localStorage.setItem('taskDueDate', input2)
+    localStorage.setItem('taskDescription', input3)
+    cardHeader.textContent = taskTitle
     taskCard.append(cardHeader)
     // document.createElement('card')
     console.log(taskCard)
@@ -211,6 +239,17 @@ function createTaskCard(task) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
+    if (!taskList) {
+        taskList = []
+        console.log("DNExists")
+    } else {
+        for (let i = 0; i < taskList.length; i++){
+            if (taskList[i].taskStatus === "To-do"){
+
+            }
+        }
+    }
+    // create a for-loop to check the status of the task is append it to the correct column 
     const taskCard = $('<div>')
     const cardHeader = $('<div>')
     const cardBody = $('<div>')
