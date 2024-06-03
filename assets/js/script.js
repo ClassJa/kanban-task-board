@@ -64,8 +64,11 @@ formListener.addEventListener('click', function(event){
         // get the user input 
         event.preventDefault
         input1.textContent = input1.value;
+        console.log(input1.value)
         input2.textContent = input2.value;
+        console.log(input2.value)
         input3.textContent = input3.value;
+        console.log(input3.value)
     
     // }
 }) 
@@ -115,13 +118,14 @@ function moveToToDo(event) {
 }
 
 
-taskCard = {
-    id: generateTaskId(),
-    title: $(''),
-    desc: $(''),
-    dueDate: $(''),
-    taskStatus: $('')
-}
+// taskCard = {
+//     id: generateTaskId(),
+//     title: $(''),
+//     desc: $(''),
+//     dueDate: $(''),
+//     taskStatus: $('')
+// }
+
 
 // collect info, store it in taskList array, renderTaskList()
 
@@ -182,8 +186,9 @@ const task = {
     taskStatus: $('').val(),
     // figure out taskStatus id 
 }
+// createTaskCard(task)
 
-
+console.log(task)
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
@@ -201,28 +206,42 @@ function generateTaskId() {
 // Todo: create a function thats create a task card
 function createTaskCard(task) {
     // task is the object with many properties
-    console.log(this.task)
-    const taskCard = $('<div>')
+    console.log(task)
+    // const taskCard = $('<div>')
+    const taskCard = document.createElement('div')
     console.log(taskCard)
-    const cardHeader = $('<h2>')
+    // const cardHeader = $('<h2>')
+    const cardHeader = document.createElement('h2')
     console.log(cardHeader)
-    const cardBody = $('<div>')
+    // const cardBody = $('<div>')
+    const cardBody = document.createElement('div')
     console.log(cardBody)
-    const cardButton = $('<button>')
+    // const cardButton = $('<button>')
+    const cardButton = document.createElement('button')
     console.log(cardButton)
-    taskCard.addClass('draggable')
-    cardHeader.addClass('card-header', 'draggable')
+    // taskCard.addClass('draggable')
+    taskCard.setAttribute('class', 'draggable card-header')
+    // cardHeader.addClass('card-header', 'draggable')
     // cardHeader.createElement('class', '.card-header')
    
     cardHeader.textContent = task.title.value
     cardBody.textContent = task.desc.value
-    taskCard.append(cardHeader, cardBody, cardButton)
+
+    taskCard.appendChild(cardHeader)
+    taskCard.appendChild(cardBody)
+    taskCard.appendChild(cardButton)
+
+    // task.appendChild(taskCard)
+    console.log(task)
+
+    
+    // taskCard.append(cardHeader, cardBody, cardButton)
     // document.createElement('card')
-    console.log(taskCard)
+    // console.log(taskCard)
 
     return task
 }
-createTaskCard()
+createTaskCard(task)
 
 
 // Todo: create a function to render the task list and make cards draggable
@@ -276,8 +295,8 @@ function handleAddTask(event){
     taskStatus: $('').val()
     // figure out taskStatus id 
     }
-
-taskList.push(task)
+    taskList.push(task)
+    
 for (let i = 0; i < taskList.length; i++){
     console.log("Items in the task list", taskList[i])
     localStorage.setItem('tasks', JSON.stringify(task))
