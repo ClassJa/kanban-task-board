@@ -4,8 +4,21 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 let taskTitle = JSON.parse(localStorage.getItem("taskTitle"));
 let taskDueDate = JSON.parse(localStorage.getItem("taskDueDate"));
 let taskDescription = JSON.parse(localStorage.getItem("taskDescription"));
-let = JSON.parse(localStorage.getItem(""));
-let = JSON.parse(localStorage.getItem(""));
+// let = JSON.parse(localStorage.getItem(""));
+// let = JSON.parse(localStorage.getItem(""));
+let toDoColumn = document.getElementById('to-do-column');
+let inProgressColumn = document.getElementById('in-progress-column');
+let doneColumn = document.getElementById('done-column')
+
+
+// const task = {
+//     id: generateTaskId(),
+//     title: $('#taskTitle').val(),
+//     desc: $('#taskDescription').val(),
+//     dueDate: $('#taskDueDate').val(),
+//     taskStatus: $('').val()
+//     // figure out taskStatus id 
+//     }
 
 
 // const addTaskBtn = document.querySelector('.addTaskBtn')
@@ -225,7 +238,16 @@ function renderTaskList() {
     }
 }
     // create a for-loop to check the status of the task is append it to the correct column 
-  
+    for (let i = 0; i <taskList.length; i ++){
+        if (taskList[i].taskStatus === toDoColumn) {
+            document.ge
+
+        } else if (taskList[i].taskStatus === inProgressColumn) {
+
+        } else {
+            taskList[i] === doneColumn
+        }
+    }
 
     // taskCard.appendChild(cardHeader)
     // taskCard.appendChild(cardBody)
