@@ -240,12 +240,12 @@ function renderTaskList() {
     // create a for-loop to check the status of the task is append it to the correct column 
     for (let i = 0; i <taskList.length; i ++){
         if (taskList[i].taskStatus === toDoColumn) {
-            document.ge
-
+            toDoColumn.appendChild(taskList[i])
         } else if (taskList[i].taskStatus === inProgressColumn) {
-
+            inProgressColumn.appendChild(taskList[i])
         } else {
-            taskList[i] === doneColumn
+            doneColumn.appendChild(taskList[i])
+            // taskList[i] === doneColumn
         }
     }
 
