@@ -101,27 +101,6 @@ function moveToToDo(event) {
 
 }
 
-// submitBtn.addEventListener('click', ren)
-
-// submitBtn.addEventListener('click', moveToToDo)
-
-
-
-
-// const id = document.querySelector('')
-// figure out how to access the task id
-// const modalBackdrop = document.querySelector('.modal-backdrop')
-
-projectTask = {
-    // id: Int32Array,
-    // title: $(''),
-    // desc: $(''),
-    // dueDate: $(''),
-    // taskStatus: $('')
-}
-
-
-const 
 
 taskCard = {
     id: generateTaskId(),
@@ -144,22 +123,10 @@ localStorage.getItem('modal-body')
 
 
 
-
-// closeModalBtn.addEventListener('click', function(event){
+// openModalBtn.addEventListener('click', function(event){
 //     event.preventDefault()
-//     // modalPopUp.setAttribute('style', 'display: none')
+
 // })
-
-openModalBtn.addEventListener('click', function(event){
-    event.preventDefault()
-    // modalPopUp.setAttribute('style', 'display: inline-block')
-
-    console.log(openModalBtn.style)
-    // openModalBtn.setAttribute('style', 'display: inline-block')
-    // openModalBtn.setAttribute('class', 'active')
-    // const modal = document.querySelector(button.dataset.modalT)
-
-})
 
 // TODO: Create a new card element and add the classes `card`, `project-card`, `draggable`, and `my-3`. Also add a `data-project-id` attribute and set it to the project id.
   // TODO: Create a new card header element and add the classes `card-header` and `h4`. Also set the text of the card header to the project name.
@@ -194,6 +161,16 @@ openModalBtn.addEventListener('click', function(event){
 // }
 
 
+const task = {
+    id: generateTaskId(),
+    title: $('#taskTitle').val(),
+    desc: $('#taskDescription').val(),
+    dueDate: $('#taskDueDate').val(),
+    taskStatus: $('').val(),
+    // figure out taskStatus id 
+}
+
+
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
@@ -201,46 +178,38 @@ function generateTaskId() {
         nextId += 1
         console.log(nextId)
     } else {
-        nextId = 0
+        nextId = 1
         console.log(nextId)
     }
-    // if (task.id === NaN || task.id === null) {
-    //     task.id = idCount
-    //     idCount += 1
-    //     console.log(task.id)
-    // } else {
-    //     task.id = idCount += 1
-    // }
-
-    // check if the nextID is in local storage increment id, if not create one starting at 0 or 1.
-    // task.id = idCount
-    // idCount += 1
-    // return task.id
 }
+  
+// HELP debug why the task object isn't accessible in the createTaskCard function
 
-    // localStorage.setItem('taskTitle', input1.value)
-    // localStorage.setItem('taskDueDate', input2.value)
-    // localStorage.setItem('taskDescription', input3.value)
-    
-    
-
-// Todo: create a function to create a task card
+// Todo: create a function thats create a task card
 function createTaskCard(task) {
     // task is the object with many properties
+    console.log(this.task)
     const taskCard = $('<div>')
-    const cardHeader = $('<div>')
+    console.log(taskCard)
+    const cardHeader = $('<h2>')
+    console.log(cardHeader)
     const cardBody = $('<div>')
+    console.log(cardBody)
+    const cardButton = $('<button>')
+    console.log(cardButton)
+    taskCard.addClass('draggable')
     cardHeader.addClass('card-header', 'draggable')
     // cardHeader.createElement('class', '.card-header')
    
-    cardHeader.textContent = task.title
-    cardBody.textContent = task.desc
-    taskCard.append(cardHeader, cardBody)
+    cardHeader.textContent = task.title.value
+    cardBody.textContent = task.desc.value
+    taskCard.append(cardHeader, cardBody, cardButton)
     // document.createElement('card')
     console.log(taskCard)
 
     return task
 }
+createTaskCard()
 
 
 // Todo: create a function to render the task list and make cards draggable
@@ -276,28 +245,51 @@ function handleAddTask(event){
     event.preventDefault();
     console.log("handle task")
     console.log($('#taskTitle').val())
+
     const task = {
     id: generateTaskId(),
     title: $('#taskTitle').val(),
-    desc: $(''),
-    dueDate: $(''),
-    taskStatus: $('')
-}
+    desc: $('#taskDescription').val(),
+    dueDate: $('#taskDueDate').val(),
+    taskStatus: $('').val()
+    // figure out taskStatus id 
+    }
+
 taskList.push(task)
-console.log("Items in the task list", taskList)
-localStorage.setItem('tasks', JSON.stringify(task))
-renderTaskList()
-$('#taskTitle').val('')
+for (let i = 0; i < taskList.length; i++){
+    console.log("Items in the task list", taskList[i])
+    localStorage.setItem('tasks', JSON.stringify(task))
+    renderTaskList()
 }
 
+// uncomment soon 
+// console.log("Items in the task list", taskList)
+// localStorage.setItem('tasks', JSON.stringify(task))
+// renderTaskList()
+// $('#taskTitle').val('')
+}
 
 
 // Todo: create a function to handle deleting a task
 function handleDeleteTask(event){
-  const id = $(this).attr('data-project-id');
-  const projects = readProjectsFromStorage();
+    event.preventDefault()
+    const id = $(this).attr('data-project-id');
+    const projects = readProjectsFromStorage();
   // TODO: Loop through the projects array and remove the project with the matching id.
-
+  for (let i = 0; i < taskList.length; i ++){
+    if (taskList[i].id === event.id){
+        task[i].id.val = ''
+        task[i].title.val = ''
+        task[i].desc.val = ''
+        task[i].dueDate.val = ''
+        task[i].taskStatus.val = ''
+        // id: generateTaskId("").val(''),
+        // title: $('#taskTitle').val(''),
+        // desc: $('#taskDescription').val(''),
+        // dueDate: $('#taskDueDate').val(''),
+        // taskStatus: $('').val("")
+    }
+  }
   // ? We will use our helper function to save the projects to localStorage
   saveProjectsToStorage(projects);
 
