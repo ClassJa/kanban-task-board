@@ -14,7 +14,7 @@ const openModalBtn = document.querySelector('[data-bs-target]')
 const closeModalBtn = document.querySelector('[data-x-button]')
 // const overlay = document.getElementById('overlay')
 // const overlayActive = document.querySelector('.active')
-// const datePicker = document.querySelector('.dueDateBoxInput')
+const datePicker = document.getElementById('taskDueDate')
 
 // const titleInput = document.querySelector('.titleBoxInput')
 // const dateInput = document.querySelector('.dueDateBoxInput')
@@ -35,7 +35,7 @@ console.log(taskStatus)
 // const input3 = document.getElementById('task-description')
 // const submitBtn = document.getElementById('task-add-btn')
 // change the class selector to have it make more sense/logical
-const submitBtn = document.querySelector('.btn-success-1')
+const submitBtn = document.querySelector('.add-task-submit')
 
 const formListener = document.getElementById('taskForm')
 
@@ -141,20 +141,18 @@ localStorage.getItem('dueDateBoxInput')
 
 localStorage.getItem('modal-body')
 
-$(function(){
-    $(datePicker).datePicker();
-})
 
 
 
-closeModalBtn.addEventListener('click', function(event){
-    event.preventDefault
-    modalPopUp.setAttribute('style', 'display: none')
-})
+
+// closeModalBtn.addEventListener('click', function(event){
+//     event.preventDefault()
+//     // modalPopUp.setAttribute('style', 'display: none')
+// })
 
 openModalBtn.addEventListener('click', function(event){
-    event.preventDefault
-    modalPopUp.setAttribute('style', 'display: inline-block')
+    event.preventDefault()
+    // modalPopUp.setAttribute('style', 'display: inline-block')
 
     console.log(openModalBtn.style)
     // openModalBtn.setAttribute('style', 'display: inline-block')
@@ -182,18 +180,18 @@ openModalBtn.addEventListener('click', function(event){
 //     // help 
 // })
 
-const task = {
-    id: generateTaskId(),
-    title,
-    desc,
-    dueDate,
-    taskStatus
+// const task = {
+//     id: generateTaskId(),
+    // title,
+    // desc,
+    // dueDate,
+    // taskStatus
     // id: generateTaskId(),
     // title: $(''),
     // desc: $(''),
     // dueDate: $(''),
     // taskStatus: $('')
-}
+// }
 
 
 
@@ -220,44 +218,49 @@ function generateTaskId() {
     // return task.id
 }
 
+    // localStorage.setItem('taskTitle', input1.value)
+    // localStorage.setItem('taskDueDate', input2.value)
+    // localStorage.setItem('taskDescription', input3.value)
+    
+    
+
 // Todo: create a function to create a task card
 function createTaskCard(task) {
+    // task is the object with many properties
     const taskCard = $('<div>')
     const cardHeader = $('<div>')
+    const cardBody = $('<div>')
     cardHeader.addClass('card-header', 'draggable')
     // cardHeader.createElement('class', '.card-header')
-    localStorage.setItem('taskTitle', input1)
-    localStorage.setItem('taskDueDate', input2)
-    localStorage.setItem('taskDescription', input3)
-    cardHeader.textContent = taskTitle
-    taskCard.append(cardHeader)
+   
+    cardHeader.textContent = task.title
+    cardBody.textContent = task.desc
+    taskCard.append(cardHeader, cardBody)
     // document.createElement('card')
     console.log(taskCard)
 
-    // how to incorporate the task parameter? 
+    return task
 }
+
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
     if (!taskList) {
         taskList = []
         console.log("DNExists")
-    } else {
-        for (let i = 0; i < taskList.length; i++){
-            if (taskList[i].taskStatus === "To-do"){
+    } 
+    for (let i = 0; i < taskList.length; i++){
+        if (taskList[i].taskStatus === "To-do"){
+            // place ids on the 3 columns to check its status
 
-            }
-        }
     }
+}
     // create a for-loop to check the status of the task is append it to the correct column 
-    const taskCard = $('<div>')
-    const cardHeader = $('<div>')
-    const cardBody = $('<div>')
-    cardHeader.textContent = input1.value
-    cardBody.textContent = input2.value
-    taskCard.appendChild(cardHeader)
-    taskCard.appendChild(cardBody)
-    taskCard.setAttribute('class', '.task-card')
+  
+
+    // taskCard.appendChild(cardHeader)
+    // taskCard.appendChild(cardBody)
+    // taskCard.setAttribute('class', '.task-card')
 
 
     // input1.textContent = input1.value;
@@ -270,8 +273,24 @@ renderTaskList()
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){
-
+    event.preventDefault();
+    console.log("handle task")
+    console.log($('#taskTitle').val())
+    const task = {
+    id: generateTaskId(),
+    title: $('#taskTitle').val(),
+    desc: $(''),
+    dueDate: $(''),
+    taskStatus: $('')
 }
+taskList.push(task)
+console.log("Items in the task list", taskList)
+localStorage.setItem('tasks', JSON.stringify(task))
+renderTaskList()
+$('#taskTitle').val('')
+}
+
+
 
 // Todo: create a function to handle deleting a task
 function handleDeleteTask(event){
@@ -293,6 +312,9 @@ function handleDrop(event, ui) {
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
+    renderTaskList()
+    $('#taskForm').on('submit', handleAddTask)
+     $('#taskDueDate').datepicker();
 
 });
 
