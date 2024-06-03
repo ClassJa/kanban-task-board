@@ -14,11 +14,16 @@ const dateInput = document.querySelector('.dueDateBoxInput')
 const descriptionInput = document.querySelector('.modal-body')
 
 
-const input1 = document.getElementById('input-1')
-const input2 = document.getElementById('input-2')
-const input3 = document.getElementById('task-description')
+const input1 = document.querySelector('.input-1')
+const input2 = document.querySelector('.input-2')
+const input3 = document.querySelector('.task-description')
+
+// const input1 = document.getElementById('input-1')
+// const input2 = document.getElementById('input-2')
+// const input3 = document.getElementById('task-description')
 // const submitBtn = document.getElementById('task-add-btn')
 const submitBtn = document.querySelector('.btn-success')
+const formListener = document.getElementById('taskForm')
 
 
 const todoDoDiv = document.getElementById('todo-cards')
@@ -27,7 +32,7 @@ const todoDoDiv = document.getElementById('todo-cards')
 
 // saves the user's input into a variable to use later and render to the screen 
 
-submitBtn.addEventListener('click', function(event){
+formListener.addEventListener('click', function(event){
     // function ren() {
         // get the user input 
         event.preventDefault
@@ -38,6 +43,20 @@ submitBtn.addEventListener('click', function(event){
     // }
 }) 
    
+
+// submitBtn.addEventListener('click', function(event){
+//     // function ren() {
+//         // get the user input 
+//         event.preventDefault
+//         input1.textContent = input1.value;
+//         console.log(input1.textContent)
+//         input2.textContent = input2.value;
+//         console.log(input2.textContent)
+//         input3.textContent = input3.value;
+//         console.log(input3.textContent)
+    
+//     // }
+// }) 
 
 submitBtn.addEventListener('click', function(event){
     event.preventDefault
@@ -147,19 +166,33 @@ openModalBtn.addEventListener('click', function(event){
 //     // help 
 // })
 
-
+const task = {
+    id: generateTaskId(),
+    title,
+    desc,
+    dueDate,
+    taskStatus
+    // id: generateTaskId(),
+    // title: $(''),
+    // desc: $(''),
+    // dueDate: $(''),
+    // taskStatus: $('')
+}
 
 
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
     idCount = 0
-    if (projectTask.id === NaN || projectTask.id === null) {
-        projectTask.id = idCount
+    if (task.id === NaN || task.id === null) {
+        task.id = idCount
         idCount += 1
-        console.log(projectTask.id)
+        console.log(task.id)
+    } else {
+        task.id = idCount += 1
     }
-    return idCount
+    task.id = task.id
+    return task.id
 }
 
 // Todo: create a function to create a task card
@@ -178,9 +211,23 @@ function createTaskCard(task) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
+    const taskCard = $('<div>')
+    const cardHeader = $('<div>')
+    const cardBody = $('<div>')
+    cardHeader.textContent = input1.value
+    cardBody.textContent = input2.value
+    taskCard.appendChild(cardHeader)
+    taskCard.appendChild(cardBody)
+    taskCard.setAttribute('class', '.task-card')
+
+
+    // input1.textContent = input1.value;
+    // input2.textContent = input2.value;
+    // input3.textContent = input3.value;
 
 
 }
+renderTaskList()
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){

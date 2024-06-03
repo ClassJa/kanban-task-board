@@ -7,9 +7,10 @@ body {
   min-height: 60vh;
 }
 
-.task-card {
+/* .task-card {
   margin: 0 auto;
-}
+
+} */
 
 .task-card:hover {
   cursor: grab;
@@ -148,4 +149,11 @@ body {
   opacity: 1;
 } */
 
+
+.task-card {
+  height: auto;
+  width: fit-content;
+  background-color: gray;
+  color: black;
+}
 
