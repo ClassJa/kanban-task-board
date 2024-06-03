@@ -245,28 +245,44 @@ createTaskCard(task)
 
 
 // Todo: create a function to render the task list and make cards draggable
-function renderTaskList() {
-    if (!taskList) {
-        taskList = []
-        console.log("DNExists")
-    } 
-    for (let i = 0; i < taskList.length; i++){
-        if (taskList[i].taskStatus === "To-do"){
-            // place ids on the 3 columns to check its status
 
-    }
-}
-    // create a for-loop to check the status of the task is append it to the correct column 
-    for (let i = 0; i <taskList.length; i ++){
-        if (taskList[i].taskStatus === toDoColumn) {
-            toDoColumn.appendChild(taskList[i])
-        } else if (taskList[i].taskStatus === inProgressColumn) {
-            inProgressColumn.appendChild(taskList[i])
-        } else {
-            doneColumn.appendChild(taskList[i])
-            // taskList[i] === doneColumn
+taskList = []
+function renderTaskList() {
+    if (taskList > 0) {
+        for (let i = 0; i <taskList.length; i ++){
+                if (taskList[i].taskStatus === toDoColumn) {
+                    toDoColumn.appendChild(taskList[i])
+                } else if (taskList[i].taskStatus === inProgressColumn) {
+                    inProgressColumn.appendChild(taskList[i])
+                } else {
+                    doneColumn.appendChild(taskList[i])
+                    // taskList[i] === doneColumn
+                }
+            }
         }
-    }
+        
+
+       // place ids on the 3 columns to check its status
+        // taskList = []
+        // console.log("DNExists")
+    // for (let i = 0; i < taskList.length; i++){
+    //     if (taskList[i].taskStatus === "To-do"){
+    //         // place ids on the 3 columns to check its status
+
+    // }
+    
+
+    // create a for-loop to check the status of the task is append it to the correct column 
+    // for (let i = 0; i <taskList.length; i ++){
+    //     if (taskList[i].taskStatus === toDoColumn) {
+    //         toDoColumn.appendChild(taskList[i])
+    //     } else if (taskList[i].taskStatus === inProgressColumn) {
+    //         inProgressColumn.appendChild(taskList[i])
+    //     } else {
+    //         doneColumn.appendChild(taskList[i])
+    //         // taskList[i] === doneColumn
+    //     }
+    // }
 
     // taskCard.appendChild(cardHeader)
     // taskCard.appendChild(cardBody)
@@ -296,7 +312,7 @@ function handleAddTask(event){
     // figure out taskStatus id 
     }
     taskList.push(task)
-    
+
 for (let i = 0; i < taskList.length; i++){
     console.log("Items in the task list", taskList[i])
     localStorage.setItem('tasks', JSON.stringify(task))
