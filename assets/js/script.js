@@ -9,93 +9,95 @@ let taskTitle = JSON.parse(localStorage.getItem("taskTitle"));
 let taskDueDate = JSON.parse(localStorage.getItem("taskDueDate"));
 let taskDescription = JSON.parse(localStorage.getItem("taskDescription"));
 
-let toDoColumn = document.getElementById('to-do-column');
+let toDoColumn = $('#to-do-column');
 console.log(toDoColumn)
 console.log($('#to-do-column'))
-let inProgressColumn = document.getElementById('in-progress-column');
-let doneColumn = document.getElementById('done-column')
+let inProgressColumn = $('#in-progress-column');
+let doneColumn = $('#done-column')
 
 
 
 
-const openModalBtn = document.querySelector('[data-bs-target]')
-const closeModalBtn = document.querySelector('[data-x-button]')
+const openModalBtn = $('[data-bs-target]')
+const closeModalBtn = $('[data-x-button]')
 
-const datePicker = document.getElementById('taskDueDate')
+const datePicker = $('#taskDueDate')
 
-const descriptionInput = document.querySelector('.modal-body')
-
-
-const input1 = document.querySelector('.input-1')
-const input2 = document.querySelector('.input-2')
-const input3 = document.querySelector('.task-description')
-const taskStatus = document.querySelector('.card-title')
+const descriptionInput = $('.modal-body')
 
 
-const submitBtn = document.querySelector('.add-task-submit')
+const input1 = $('.input-1')
+const input2 = $('.input-2')
+const input3 = $('.task-description')
+const taskStatus = $('.card-title')
 
-const formListener = document.getElementById('taskForm')
+
+const submitBtn = $('.add-task-submit')
+
+const formListener = $('#taskForm')
 
 
-const todoDoDiv = document.getElementById('todo-cards')
+const todoDoDiv = $('#todo-cards')
 
 
 // saves the user's input into a variable to use later and render to the screen 
 
-formListener.addEventListener('click', function(event){
-    // function ren() {
+
+    function ren(event) {
         // get the user input 
         event.preventDefault
-        input1.textContent = input1.value;
-        console.log(input1.value)
-        input2.textContent = input2.value;
-        console.log(input2.value)
-        input3.textContent = input3.value;
-        console.log(input3.value)
+        input1.text = input1.val();
+        console.log(input1.val())
+        input2.text = input2.val();
+        console.log(input2.val())
+        input3.text = input3.val();
+        console.log(input3.val())
     
     // }
-}) 
+}
+// $('#taskForm').on('click', ren)
+formListener.on('click', ren)
    
 
 // submitBtn.addEventListener('click', moveToToDo(event))
-submitBtn.click(moveToToDo)
+// submitBtn.click(moveToToDo)
 
-function moveToToDo(event) {
-    console.log("start the function")
-    event.preventDefault
-    // create a div element 
-    const todoDiv =  document.createElement('div')
-    const divText = document.createElement('div')
-    const divHeader = document.createElement('h1')
+// function moveToToDo(event) {
+//     console.log("start the function")
+//     event.preventDefault
+//     // create a div element 
+//     const todoDiv =  $('div')
+//     const divText = $('div')
+//     const divHeader = $('h1')
 
-    todoDiv.setAttribute('style', 'backgoround-color: black')
+//     todoDiv.setAttribute('style', 'backgoround-color: black')
 
-    todoDiv.appendChild(divText)
-    divText.appendChild(divHeader)
+//     todoDiv.appendChild(divText)
+//     divText.appendChild(divHeader)
 
-    divHeader.textContent = input1.value
-    todoDiv.appendChild(divText)
+//     divHeader.textContent = input1.value
+//     todoDiv.appendChild(divText)
 
 
-    // todoDiv.append()
-    todoDiv.setAttribute('style', 'display: inline-block')
-    // populate the element with info from ren() function 
-    todoDiv.innerHTML = [input1.value + " " , input2.value + " " , input3.value]
-    console.log(todoDiv.textContent)
-    todoDoDiv.innerHTML = todoDiv.textContent
+//     // todoDiv.append()
+//     todoDiv.setAttribute('style', 'display: inline-block')
+//     // populate the element with info from ren() function 
+//     todoDiv.innerHTML = [input1.value + " " , input2.value + " " , input3.value]
+//     console.log(todoDiv.textContent)
+//     todoDoDiv.innerHTML = todoDiv.textContent
 
-}
+// }
 
 
 // collect info, store it in taskList array, renderTaskList()
 
-localStorage.getItem('titleBoxInput')
+// localStorage.getItem('titleBoxInput')
 
 // console.log(titleInput.value)
 
-localStorage.getItem('dueDateBoxInput')
+// localStorage.getItem('dueDateBoxInput')
 
-localStorage.getItem('modal-body')
+// localStorage.getItem('modal-body')
 
 
 const task = {
@@ -126,7 +128,7 @@ function generateTaskId() {
 function createTaskCard(task) {
     // task is the object with many properties
 
-    const taskCard = $('div')
+    const taskCard = $('<div>')
     .addClass('draggable card-header')
     .attr('nextId', task.id)
     const cardHeader = $('<div>').addClass('card-header h2').text(task.title)
