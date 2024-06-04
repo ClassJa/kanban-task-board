@@ -200,9 +200,9 @@ function handleAddTask(event){
     // $('#taskTitle').val(''),
     // $('#taskDescription').val(''),
     // $('#taskDueDate').val(''),
-    title = $('#taskTitle').val(''),
-    desc = $('#taskDescription').val(''),
-    dueDate = $('#taskDueDate').val('')
+    title = $('taskTitle').val('')
+    desc = $('taskDescription').val('')
+    dueDate = $('taskDueDate').val('')
 
     console.log("handle task")
     console.log($('#taskTitle').val())
