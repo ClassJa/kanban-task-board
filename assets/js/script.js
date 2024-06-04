@@ -157,6 +157,8 @@ function renderTaskList() {
     // $('#to-do-column').empty()
     // $('#in-progress').empty()
     // $('#done').empty()
+
+    $('#to-do-column, #in-progress-column, #done-column').empty();
     for (let task of taskList){
             if (task.taskStatus === 'to-do') {
                 $('#to-do-column').append(createTaskCard(task))
