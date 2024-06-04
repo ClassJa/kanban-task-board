@@ -196,6 +196,9 @@ function renderTaskList() {
 function handleAddTask(event){
     event.preventDefault();
     // figure out how to clear the selections so that the tasks are duplicated when rendered to the screen 
+    $('#taskTitle').val(''),
+    $('#taskDescription').val(''),
+    $('#taskDueDate').val(''),
     console.log("handle task")
     console.log($('#taskTitle').val())
 
