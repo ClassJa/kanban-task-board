@@ -210,37 +210,38 @@ function generateTaskId() {
 // HELP debug why the task object isn't accessible in the createTaskCard function
 
 // Todo: create a function thats create a task card
+
+
 function createTaskCard(task) {
     // task is the object with many properties
     console.log(task)
-
-    // const t = $('div')
-    // const taskCard = $('<div>')
     const taskCard = $('div')
-    taskCard.addClass('draggable card-header')
-    console.log(taskCard)
-    // const cardHeader = $('<h2>')
-    const cardHeader = $('h2')
-    console.log(cardHeader)
-    // const cardBody = $('<div>')
-    const cardBody = $('div')
-    console.log(cardBody)
-    // const cardButton = $('<button>')
-    const cardButton = $('button')
+    .addClass('draggable card-header')
+    .attr('nextId', task.id);
+    const cardHeader = $('<div>').addClass('card-header h2').text(task.title);
+    const cardBody = $('<div>').addClass('card-body');
+    const cardDescription = $('<p>').addClass('task-description').text(task.desc);
+    const cardDueDate = $('<p>').addClass('input-2').text(task.taskDueDate);
+    const cardButton = $('<button>')
+    .attr('nextId', task.id);
     console.log(cardButton)
     // taskCard.addClass('draggable')
-    taskCard.setAttribute('class', 'draggable card-header')
+    // taskCard.setAttribute('class', 'draggable card-header')
     // cardHeader.addClass('card-header', 'draggable')
     // cardHeader.createElement('class', '.card-header')
    
-    cardHeader.text = task.title
-    console.log(cardHeader.textContent)
-    cardBody.textContent = task.desc
-    console.log(cardBody.textContent)
+   
 
-    taskCard.append(cardHeader)
-    taskCard.append(cardBody)
-    taskCard.append(cardButton)
+
+    taskCard.append(cardHeader, cardBody, cardDescription, cardDueDate, cardButton)
+    // cardHeader.text = task.title
+    // console.log(cardHeader.textContent)
+    // cardBody.textContent = task.desc
+    // console.log(cardBody.textContent)
+
+    // taskCard.append(cardHeader)
+    // taskCard.append(cardBody)
+    // taskCard.append(cardButton)
 
     // task.appendChild(taskCard)
 
