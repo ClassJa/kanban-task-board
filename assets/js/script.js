@@ -153,9 +153,9 @@ function createTaskCard(task) {
 
 function renderTaskList() {
     // empty the taskCard by targeting each column 
-    $('to-do-column').empty()
-    $('in-progress').empty()
-    $('done').empty()
+    $('#to-do-column').empty()
+    $('#in-progress').empty()
+    $('#done').empty()
     for (let task of taskList){
             if (task.taskStatus === 'to-do') {
                 toDoColumn.append(createTaskCard(task))
