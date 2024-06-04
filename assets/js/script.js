@@ -5,9 +5,10 @@ let taskList = JSON.parse(localStorage.getItem("tasks")) || [];
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
 // create an object for 6-8
-let taskTitle = JSON.parse(localStorage.getItem("taskTitle"));
-let taskDueDate = JSON.parse(localStorage.getItem("taskDueDate"));
-let taskDescription = JSON.parse(localStorage.getItem("taskDescription"));
+let taskTitle = JSON.parse(localStorage.getItem("#taskTitle"));
+// let taskTitle = JSON.parse(localStorage.content = $('taskTitle').html)
+let taskDueDate = JSON.parse(localStorage.getItem("#taskDueDate"));
+let taskDescription = JSON.parse(localStorage.getItem("#taskDescription"));
 
 let toDoColumn = $('#to-do-column');
 console.log(toDoColumn)
@@ -153,9 +154,9 @@ function createTaskCard(task) {
 
 function renderTaskList() {
     // empty the taskCard by targeting each column 
-    $('#to-do-column').empty()
-    $('#in-progress').empty()
-    $('#done').empty()
+    // $('#to-do-column').empty()
+    // $('#in-progress').empty()
+    // $('#done').empty()
     for (let task of taskList){
             if (task.taskStatus === 'to-do') {
                 $('#to-do-column').append(createTaskCard(task))
@@ -196,9 +197,13 @@ function renderTaskList() {
 function handleAddTask(event){
     event.preventDefault();
     // figure out how to clear the selections so that the tasks are duplicated when rendered to the screen 
-    $('#taskTitle').val(''),
-    $('#taskDescription').val(''),
-    $('#taskDueDate').val(''),
+    // $('#taskTitle').val(''),
+    // $('#taskDescription').val(''),
+    // $('#taskDueDate').val(''),
+    title = $('#taskTitle').val(''),
+    desc = $('#taskDescription').val(''),
+    dueDate = $('#taskDueDate').val('')
+
     console.log("handle task")
     console.log($('#taskTitle').val())
 
@@ -243,11 +248,6 @@ function handleDeleteTask(event){
        
     }
   }
-  // ? We will use our helper function to save the projects to localStorage
-  saveProjectsToStorage(projects);
-
-  // ? Here we use our other function to print projects back to the screen
-  printProjectData();
 }
 
 // Todo: create a function to handle dropping a task into a new status lane
