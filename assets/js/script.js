@@ -149,12 +149,13 @@ function createTaskCard(task) {
 
 
 
-
-
 // Todo: create a function to render the task list and make cards draggable
 
 function renderTaskList() {
     // empty the taskCard by targeting each column 
+    $('to-do-column').empty()
+    $('in-progress').empty()
+    $('done').empty()
     for (let task of taskList){
             if (task.taskStatus === 'to-do') {
                 toDoColumn.append(createTaskCard(task))
@@ -167,8 +168,7 @@ function renderTaskList() {
 
         }
     }
-
-
+    createTaskCard(task)
 
     // makes the element that has a draggable class attached to it draggable using the jquery function 
     $('.draggable').draggable({
@@ -177,9 +177,9 @@ function renderTaskList() {
 
         helper: function (e) {
           
-          const original = $(e.target).hasClass('draggable')
+          const original = $(e.target).hasClass('ui-draggable')
             ? $(e.target)
-            : $(e.target).closest('.draggable');
+            : $(e.target).closest('.ui-draggable');
          
           return original.clone().css({
             width: original.outerWidth(),
@@ -188,14 +188,14 @@ function renderTaskList() {
       });
     // add a draggable class when the card is created 
     
-
-    createTaskCard(task)
+    
 }
 // renderTaskList()
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){
     event.preventDefault();
+    // figure out how to clear the selections so that the tasks are duplicated when rendered to the screen 
     console.log("handle task")
     console.log($('#taskTitle').val())
 
@@ -213,12 +213,13 @@ function handleAddTask(event){
     // stringify allows for saving to local storage
     // json.parse allows the revert of the string to its original state 
     localStorage.setItem('tasks', JSON.stringify(taskList))
-    $('#taskTitle').val(""),
-    $('#taskDescription').val(""),
-    $('#taskDueDate').val(""),
+    // $('#taskTitle').val(""),
+    // $('#taskDescription').val(""),
+    // $('#taskDueDate').val(""),
     console.log(JSON.stringify(taskList))
 
     renderTaskList()
+    
 
 }
 
@@ -251,6 +252,8 @@ function handleDrop(event, ui) {
  // when dropped in one of the swim-lanes change the taskStatus accordingly 
 //  event.target.id (todo, inprogress, done) -> (gets the location) use this to set the task.taskStatus = 
 // target the event that its dropped on and get it's id set the status of the task to the column its dropped on 
+
+
 }
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
