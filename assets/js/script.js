@@ -158,12 +158,12 @@ function renderTaskList() {
     $('#done').empty()
     for (let task of taskList){
             if (task.taskStatus === 'to-do') {
-                toDoColumn.append(createTaskCard(task))
+                $('#to-do-column').append(createTaskCard(task))
             } else if (task.taskStatus === 'in-progress') {
-                inProgressColumn.append(task)
+                $('#in-progress').append(task)
                 // figure out how to append in JQUERY
             } else {
-                doneColumn.append(task)
+                $('#done').append(task)
                 // taskList[i] === doneColumn
 
         }
