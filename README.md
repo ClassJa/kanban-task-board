@@ -7,6 +7,8 @@ This project utilizes the programming languages of HTML, CSS, and javascript to 
 
 https://classja.github.io/kanban-task-board/
 
+![alt text](image.png)
+
 ## Credits 
 Sought out assistance from the websites and resources listed below: 
 - [x] Referenced this week’s mini-project
