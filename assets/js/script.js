@@ -129,9 +129,7 @@ function generateTaskId() {
 function createTaskCard(task) {
     // task is the object with many properties
 
-    const taskCard = $('<div>')
-    .addClass('draggable card-header')
-    .attr('nextId', task.id)
+    const taskCard = $('<div>').addClass('draggable card-header').attr('nextId', task.id)
     const cardHeader = $('<div>').addClass('card-header h2').text(task.title)
     const cardBody = $('<div>').addClass('card-body')
     const cardDescription = $('<p>').addClass('task-description').text(task.desc)
@@ -145,10 +143,29 @@ function createTaskCard(task) {
     taskCard.append(cardHeader, cardBody, cardButton)
   
 
+
     return taskCard
 }
 
 
+
+    $(function() {
+        $('.draggable').draggable({
+            opacity: 0.7,
+            zIndex: 100,
+    
+            helper: function (e) {
+              
+              const original = $(e.target).hasClass('ui-draggable')
+                ? $(e.target)
+                : $(e.target).closest('.ui-draggable');
+             
+              return original.clone().css({
+                width: original.outerWidth(),
+              });
+            },
+          });
+        });
 
 // Todo: create a function to render the task list and make cards draggable
 
@@ -178,21 +195,8 @@ function renderTaskList() {
   
 
     // makes the element that has a draggable class attached to it draggable using the jquery function 
-    $('.draggable').draggable({
-        opacity: 0.7,
-        zIndex: 100,
 
-        helper: function (e) {
-          
-          const original = $(e.target).hasClass('ui-draggable')
-            ? $(e.target)
-            : $(e.target).closest('.ui-draggable');
-         
-          return original.clone().css({
-            width: original.outerWidth(),
-          });
-        },
-      });
+   
     // add a draggable class when the card is created 
     
     
@@ -258,7 +262,7 @@ function handleDeleteTask(event){
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
-    
+
  // when dropped in one of the swim-lanes change the taskStatus accordingly 
 //  event.target.id (todo, inprogress, done) -> (gets the location) use this to set the task.taskStatus = 
 // target the event that its dropped on and get it's id set the status of the task to the column its dropped on 
