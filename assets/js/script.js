@@ -158,20 +158,24 @@ function renderTaskList() {
     // $('#in-progress').empty()
     // $('#done').empty()
 
+    // $('#to-do-column').val('');
+    // $('#in-progress-column').empty();
+    // $('#done-column').empty();
     $('#to-do-column, #in-progress-column, #done-column').empty();
     for (let task of taskList){
-            if (task.taskStatus === 'to-do') {
-                $('#to-do-column').append(createTaskCard(task))
-            } else if (task.taskStatus === 'in-progress') {
-                $('#in-progress').append(task)
-                // figure out how to append in JQUERY
-            } else {
-                $('#done').append(task)
-                // taskList[i] === doneColumn
+        if (task.taskStatus === 'to-do') {
+            $('#to-do-column').append(createTaskCard(task))
+        } else if (task.taskStatus === 'in-progress') {
+            $('#in-progress').append(task)
+            // figure out how to append in JQUERY
+        } else {
+            $('#done').append(task)
+            // taskList[i] === doneColumn
 
-        }
+    }
     }
     createTaskCard(task)
+  
 
     // makes the element that has a draggable class attached to it draggable using the jquery function 
     $('.draggable').draggable({
@@ -254,6 +258,7 @@ function handleDeleteTask(event){
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
+    
  // when dropped in one of the swim-lanes change the taskStatus accordingly 
 //  event.target.id (todo, inprogress, done) -> (gets the location) use this to set the task.taskStatus = 
 // target the event that its dropped on and get it's id set the status of the task to the column its dropped on 
