@@ -149,35 +149,11 @@ function createTaskCard(task) {
 
 
 
-    $(function() {
-        $('.draggable').draggable({
-            opacity: 0.7,
-            zIndex: 100,
-    
-            helper: function (e) {
-              
-              const original = $(e.target).hasClass('ui-draggable')
-                ? $(e.target)
-                : $(e.target).closest('.ui-draggable');
-             
-              return original.clone().css({
-                width: original.outerWidth(),
-              });
-            },
-          });
-        });
 
 // Todo: create a function to render the task list and make cards draggable
 
 function renderTaskList() {
-    // empty the taskCard by targeting each column 
-    // $('#to-do-column').empty()
-    // $('#in-progress').empty()
-    // $('#done').empty()
-
-    // $('#to-do-column').val('');
-    // $('#in-progress-column').empty();
-    // $('#done-column').empty();
+   
     $('#to-do-column, #in-progress-column, #done-column').empty();
     for (let task of taskList){
         if (task.taskStatus === 'to-do') {
@@ -189,9 +165,34 @@ function renderTaskList() {
             $('#done').append(task)
             // taskList[i] === doneColumn
 
+            // $(function() {
+                $('.draggable').draggable({
+                    opacity: 0.7,
+                    zIndex: 100,
+            
+                    helper: function (e) {
+                      
+                      const original = $(e.target).hasClass('ui-draggable')
+                        ? $(e.target)
+                        : $(e.target).closest('.ui-draggable');
+                     
+                      return original.clone().css({
+                        width: original.outerWidth(),
+                      });
+                    },
+                  });
+                // });
     }
     }
     createTaskCard(task)
+     // empty the taskCard by targeting each column 
+    // $('#to-do-column').empty()
+    // $('#in-progress').empty()
+    // $('#done').empty()
+
+    // $('#to-do-column').val('');
+    // $('#in-progress-column').empty();
+    // $('#done-column').empty();
   
 
     // makes the element that has a draggable class attached to it draggable using the jquery function 
