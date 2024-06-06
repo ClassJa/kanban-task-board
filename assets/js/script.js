@@ -9,35 +9,19 @@ let taskTitle = JSON.parse(localStorage.getItem("#taskTitle"));
 // let taskTitle = JSON.parse(localStorage.content = $('taskTitle').html)
 let taskDueDate = JSON.parse(localStorage.getItem("#taskDueDate"));
 let taskDescription = JSON.parse(localStorage.getItem("#taskDescription"));
-
 let toDoColumn = $('#to-do-column');
-console.log(toDoColumn)
-console.log($('#to-do-column'))
 let inProgressColumn = $('#in-progress-column');
 let doneColumn = $('#done-column')
-
-
-
-
 const openModalBtn = $('[data-bs-target]')
 const closeModalBtn = $('[data-x-button]')
-
 const datePicker = $('#taskDueDate')
-
 const descriptionInput = $('.modal-body')
-
-
 const input1 = $('.input-1')
 const input2 = $('.input-2')
 const input3 = $('.task-description')
 const taskStatus = $('.card-title')
-
-
 const submitBtn = $('.add-task-submit')
-
 const formListener = $('#taskForm')
-
-
 const todoDoDiv = $('#todo-cards')
 
 
@@ -58,48 +42,6 @@ const todoDoDiv = $('#todo-cards')
 }
 // $('#taskForm').on('click', ren)
 formListener.on('click', ren)
-   
-
-// submitBtn.addEventListener('click', moveToToDo(event))
-// submitBtn.click(moveToToDo)
-
-// function moveToToDo(event) {
-//     console.log("start the function")
-//     event.preventDefault
-//     // create a div element 
-//     const todoDiv =  $('div')
-//     const divText = $('div')
-//     const divHeader = $('h1')
-
-//     todoDiv.setAttribute('style', 'backgoround-color: black')
-
-//     todoDiv.appendChild(divText)
-//     divText.appendChild(divHeader)
-
-//     divHeader.textContent = input1.value
-//     todoDiv.appendChild(divText)
-
-
-//     // todoDiv.append()
-//     todoDiv.setAttribute('style', 'display: inline-block')
-//     // populate the element with info from ren() function 
-//     todoDiv.innerHTML = [input1.value + " " , input2.value + " " , input3.value]
-//     console.log(todoDiv.textContent)
-//     todoDoDiv.innerHTML = todoDiv.textContent
-
-// }
-
-
-// collect info, store it in taskList array, renderTaskList()
-
-// localStorage.getItem('titleBoxInput')
-
-// console.log(titleInput.value)
-
-// localStorage.getItem('dueDateBoxInput')
-
-// localStorage.getItem('modal-body')
-
 
 const task = {
     id: generateTaskId(),
@@ -134,15 +76,11 @@ function createTaskCard(task) {
     const cardBody = $('<div>').addClass('card-body')
     const cardDescription = $('<p>').addClass('task-description').text(task.desc)
     const cardDueDate = $('<p>').addClass('input-2').text(task.dueDate)
-    cardBody.append(cardDescription, cardDueDate)
-    const cardButton = $('<button>')
+    const cardDelete = $('<button>').text('Delete')
+    cardBody.append(cardDescription, cardDueDate, cardDelete)
     // .attr('nextId', task.id)
-    console.log(cardButton)
 
-
-    taskCard.append(cardHeader, cardBody, cardButton)
-  
-
+    taskCard.append(cardHeader, cardBody, cardDelete)
 
     return taskCard
 }
@@ -155,18 +93,15 @@ function createTaskCard(task) {
 function renderTaskList() {
    
     $('#to-do-column, #in-progress-column, #done-column').empty();
-    const to_do_column = $('#to-do-column')
-    const in_progress = $('#in-progress-column')
-    const done_c = $('#done-column')
 
     for (let task of taskList){
-        if (task.taskStatus === 'to-do-column') {
-            to_do_column.append(createTaskCard(task))
+        if (task.taskStatus === 'to-do') {
+            toDoColumn.append(createTaskCard(task))
         } else if (task.taskStatus === 'in-progress-column') {
-            in_progress.append(createTaskCard(task))
+            inProgressColumn.append(createTaskCard(task))
             // figure out how to append in JQUERY
         } else {
-            done_c.append(createTaskCard(task))
+            doneColumn.append(createTaskCard(task))
             // taskList[i] === doneColumn
     $('.draggable').draggable({
         opacity: 0.7,
@@ -224,7 +159,7 @@ function handleAddTask(event){
     title: $('#taskTitle').val(),
     desc: $('#taskDescription').val(),
     dueDate: $('#taskDueDate').val(),
-    taskStatus: 'to-do'
+    taskStatus: 'to-do',
     // figure out taskStatus id 
     }
     taskList.push(task)
@@ -233,9 +168,6 @@ function handleAddTask(event){
     // stringify allows for saving to local storage
     // json.parse allows the revert of the string to its original state 
     localStorage.setItem('tasks', JSON.stringify(taskList))
-    // $('#taskTitle').val(""),
-    // $('#taskDescription').val(""),
-    // $('#taskDueDate').val(""),
     console.log(JSON.stringify(taskList))
 
     renderTaskList()
@@ -263,14 +195,25 @@ function handleDeleteTask(event){
 }
 
 // Todo: create a function to handle dropping a task into a new status lane
-function handleDrop(event, ui) {
 
+function handleDropEvent(event, ui) {
+    const taskId = ui.draggable[0].dataset.projectId;
+
+    const newTaskStatus = event.target.id
+    function handleDrop(event, ui) {
+        for (let task of taskList) {
+            if (task.id === id) {
+                task.taskStatus = newTaskStatus
+            }
+        }
+}
+}
  // when dropped in one of the swim-lanes change the taskStatus accordingly 
 //  event.target.id (todo, inprogress, done) -> (gets the location) use this to set the task.taskStatus = 
 // target the event that its dropped on and get it's id set the status of the task to the column its dropped on 
 
 
-}
+
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
