@@ -17,6 +17,7 @@ Sought out assistance from the websites and resources listed below:
 - [x] https://stackoverflow.com/questions/38202399/bring-modal-to-front
 - [x] AskBCS
 - [x] https://www.youtube.com/watch?v=MBaw_6cPmAw
+- [x] TA - Akon  
 
 
 ## License 
