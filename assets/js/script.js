@@ -12,7 +12,7 @@ let taskDescription = JSON.parse(localStorage.getItem("#taskDescription"));
 let toDoColumn = $('#to-do-column');
 let inProgressColumn = $('#in-progress-column');
 let doneColumn = $('#done-column')
-const deleteBtn = $('.deleteBtn')
+// const deleteBtn = $('.deleteBtn')
 // const openModalBtn = $('[data-bs-target]')
 // const closeModalBtn = $('[data-x-button]')
 const datePicker = $('#taskDueDate')
@@ -153,25 +153,30 @@ function handleAddTask(event){
 
 // Todo: create a function to handle deleting a task
 
-deleteBtn.on('click', handleDeleteTask)
 
-function handleDeleteTask(event){
-    event.preventDefault()
 
-    const id = $(this).attr('data-project-id');
+function handleDeleteTask(){
+    console.log('delete clicked')
+    // event.preventDefault()
+    
+    const id = $(this).attr('next-id');
   // TODO: Loop through the projects array and remove the project with the matching id.
   for (let i = 0; i < taskList.length; i ++){
-    if (taskList[i].id === event.id){
-        taskList.splice(taskList.indexOf(task), 1)
-        task[i].id.val = ''
-        task[i].title.val = ''
-        task[i].desc.val = ''
-        task[i].dueDate.val = ''
-        task[i].taskStatus.val = ''
+    if (taskList[i].id === id){
+        taskList.splice(taskList[i], 1)
+        // taskList[i].id = ''
+        // task[i].id.val = ''
+        // task[i].title.val = ''
+        // task[i].desc.val = ''
+        // task[i].dueDate.val = ''
+        // task[i].taskStatus.val = ''
        
     }
   }
 }
+
+
+$('<button>').on('click', handleDeleteTask())
 
 // Todo: create a function to handle dropping a task into a new status lane
 // when the user clicks a task card and moves it to another column, the specified task should change position 
