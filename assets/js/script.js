@@ -61,12 +61,14 @@ console.log(task)
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
     if (nextId) {
-        nextId += 1
+        localStorage.setItem('nextId', nextId += 1)
         console.log(nextId)
     } else {
         nextId = 1
+        localStorage.setItem('nextId', nextId)
         console.log(nextId)
     }
+    return nextId
 }
 
 // uses jquery to create and format a newly added task card that includes a header section with a title, a body section with the task description, and the due date as well as a delete button
@@ -148,6 +150,7 @@ function handleAddTask(event){
     console.log(JSON.stringify(taskList))
 
     renderTaskList()
+    // return 
 }
 
 
@@ -157,11 +160,17 @@ function handleAddTask(event){
 
 function handleDeleteTask(){
     console.log('delete clicked')
-    const id = $(this).attr('next-id');
+    // const id = localStorage.getItem(($(this).attr('nextId')));
+
+    // pick up here with debugging 
+    const id = $(this).attr('nextId');
+    
   // TODO: Loop through the projects array and remove the project with the matching id.
   for (let i = 0; i < taskList.length; i ++){
     if (taskList[i].id === id){
-        taskList.splice(taskList[i], 1)
+        taskList.pop(taskList[i])
+        localStorage.setItem('nextId', '')
+        // taskList.splice(taskList[i], 1)
         // taskList[i].id = ''
         // task[i].id.val = ''
         // task[i].title.val = ''
