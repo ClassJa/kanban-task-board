@@ -157,8 +157,6 @@ function handleAddTask(event){
 
 function handleDeleteTask(){
     console.log('delete clicked')
-    // event.preventDefault()
-    
     const id = $(this).attr('next-id');
   // TODO: Loop through the projects array and remove the project with the matching id.
   for (let i = 0; i < taskList.length; i ++){
@@ -176,7 +174,7 @@ function handleDeleteTask(){
 }
 
 
-$('<button>').on('click', handleDeleteTask())
+$(document).on('click', '.deleteBtn', handleDeleteTask)
 
 // Todo: create a function to handle dropping a task into a new status lane
 // when the user clicks a task card and moves it to another column, the specified task should change position 
