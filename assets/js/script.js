@@ -129,7 +129,7 @@ function generateTaskId() {
 function createTaskCard(task) {
     // task is the object with many properties
 
-    const taskCard = $('<div>').addClass('draggable card-header').attr('nextId', task.id)
+    const taskCard = $('<div>').addClass('draggable').attr('nextId', task.id)
     const cardHeader = $('<div>').addClass('card-header h2').text(task.title)
     const cardBody = $('<div>').addClass('card-body')
     const cardDescription = $('<p>').addClass('task-description').text(task.desc)
@@ -155,36 +155,37 @@ function createTaskCard(task) {
 function renderTaskList() {
    
     $('#to-do-column, #in-progress-column, #done-column').empty();
+    const to_do_column = $('#to-do-column')
+    const in_progress = $('#in-progress-column')
+    const done_c = $('#done-column')
+
     for (let task of taskList){
-        if (task.taskStatus === 'to-do') {
-            $('#to-do-column').append(createTaskCard(task))
-        } else if (task.taskStatus === 'in-progress') {
-            $('#in-progress').append(task)
+        if (task.taskStatus === 'to-do-column') {
+            to_do_column.append(createTaskCard(task))
+        } else if (task.taskStatus === 'in-progress-column') {
+            in_progress.append(createTaskCard(task))
             // figure out how to append in JQUERY
         } else {
-            $('#done').append(task)
+            done_c.append(createTaskCard(task))
             // taskList[i] === doneColumn
+    $('.draggable').draggable({
+        opacity: 0.7,
+        zIndex: 100,
 
-            // $(function() {
-                $('.draggable').draggable({
-                    opacity: 0.7,
-                    zIndex: 100,
+        helper: function (e) {
             
-                    helper: function (e) {
-                      
-                      const original = $(e.target).hasClass('ui-draggable')
-                        ? $(e.target)
-                        : $(e.target).closest('.ui-draggable');
-                     
-                      return original.clone().css({
-                        width: original.outerWidth(),
-                      });
-                    },
-                  });
-                // });
+            const original = $(e.target).hasClass('ui-draggable')
+            ? $(e.target)
+            : $(e.target).closest('.ui-draggable');
+            
+            return original.clone().css({
+            width: original.outerWidth(),
+            });
+        },
+        });
+        }
     }
-    }
-    createTaskCard(task)
+    // createTaskCard(task)
      // empty the taskCard by targeting each column 
     // $('#to-do-column').empty()
     // $('#in-progress').empty()
