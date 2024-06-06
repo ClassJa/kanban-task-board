@@ -12,23 +12,24 @@ let taskDescription = JSON.parse(localStorage.getItem("#taskDescription"));
 let toDoColumn = $('#to-do-column');
 let inProgressColumn = $('#in-progress-column');
 let doneColumn = $('#done-column')
-const openModalBtn = $('[data-bs-target]')
-const closeModalBtn = $('[data-x-button]')
+// const openModalBtn = $('[data-bs-target]')
+// const closeModalBtn = $('[data-x-button]')
 const datePicker = $('#taskDueDate')
-const descriptionInput = $('.modal-body')
-const input1 = $('.input-1')
-const input2 = $('.input-2')
-const input3 = $('.task-description')
-const taskStatus = $('.card-title')
-const submitBtn = $('.add-task-submit')
+// const descriptionInput = $('.modal-body')
+
+// const taskStatus = $('.card-title')
+// const submitBtn = $('.add-task-submit')
 const formListener = $('#taskForm')
-const todoDoDiv = $('#todo-cards')
+// const todoDoDiv = $('#todo-cards')
 
 
 // saves the user's input into a variable to use later and render to the screen 
 
 
     function ren(event) {
+        const input1 = $('.input-1')
+        const input2 = $('.input-2')
+        const input3 = $('.task-description')
         // get the user input 
         event.preventDefault
         input1.text = input1.val();
@@ -48,7 +49,8 @@ const task = {
     title: $('#taskTitle').val(),
     desc: $('#taskDescription').val(),
     dueDate: $('#taskDueDate').val(),
-    taskStatus: $('').val(),
+    taskStatus: 'to-do'
+    // $('').val(), above for task status
     // figure out taskStatus id 
 }
 // createTaskCard(task)
@@ -66,30 +68,24 @@ function generateTaskId() {
     }
 }
 
-// Todo: create a function thats create a task card
-// uses jquery to create and format a newly added task card 
+// uses jquery to create and format a newly added task card that includes a header section with a title, a body section with the task description, and the due date as well as a delete button
 function createTaskCard(task) {
-    // task is the object with many properties
 
-    const taskCard = $('<div>').addClass('draggable').attr('nextId', task.id)
+    const taskCard = $('<div>').addClass('draggable, card-header').attr('nextId', task.id)
     const cardHeader = $('<div>').addClass('card-header h2').text(task.title)
     const cardBody = $('<div>').addClass('card-body')
     const cardDescription = $('<p>').addClass('task-description').text(task.desc)
     const cardDueDate = $('<p>').addClass('input-2').text(task.dueDate)
     const cardDelete = $('<button>').text('Delete')
-    cardBody.append(cardDescription, cardDueDate, cardDelete)
-    // .attr('nextId', task.id)
-
+    cardBody.append(cardDescription, cardDueDate)
     taskCard.append(cardHeader, cardBody, cardDelete)
 
     return taskCard
 }
 
 
-
-
-// Todo: create a function to render the task list and make cards draggable
-
+// Clears the form entries each time the user wants to add a new card to the board, checks to see the status of the task card, and displays the task card in the correct column based on status
+// add the draggable functionality so that the tasks can be actively updated by the user based on the task status
 function renderTaskList() {
    
     $('#to-do-column, #in-progress-column, #done-column').empty();
@@ -120,33 +116,14 @@ function renderTaskList() {
         });
         }
     }
-    // createTaskCard(task)
-     // empty the taskCard by targeting each column 
-    // $('#to-do-column').empty()
-    // $('#in-progress').empty()
-    // $('#done').empty()
-
-    // $('#to-do-column').val('');
-    // $('#in-progress-column').empty();
-    // $('#done-column').empty();
-  
-
-    // makes the element that has a draggable class attached to it draggable using the jquery function 
-
-   
-    // add a draggable class when the card is created 
-    
     
 }
 // renderTaskList()
 
 // Todo: create a function to handle adding a new task
+// Collects the user inputs from the form and creates a task card with those details, when card is created, it is push onto a task list in order to be displayed to the screenand saved to local storage in the correct order 
 function handleAddTask(event){
     event.preventDefault();
-    // figure out how to clear the selections so that the tasks are duplicated when rendered to the screen 
-    // $('#taskTitle').val(''),
-    // $('#taskDescription').val(''),
-    // $('#taskDueDate').val(''),
     title = $('taskTitle').val('')
     desc = $('taskDescription').val('')
     dueDate = $('taskDueDate').val('')
@@ -160,7 +137,6 @@ function handleAddTask(event){
     desc: $('#taskDescription').val(),
     dueDate: $('#taskDueDate').val(),
     taskStatus: 'to-do',
-    // figure out taskStatus id 
     }
     taskList.push(task)
 
@@ -171,8 +147,6 @@ function handleAddTask(event){
     console.log(JSON.stringify(taskList))
 
     renderTaskList()
-    
-
 }
 
 
@@ -180,7 +154,6 @@ function handleAddTask(event){
 function handleDeleteTask(event){
     event.preventDefault()
     const id = $(this).attr('data-project-id');
-    const projects = readProjectsFromStorage();
   // TODO: Loop through the projects array and remove the project with the matching id.
   for (let i = 0; i < taskList.length; i ++){
     if (taskList[i].id === event.id){
@@ -195,19 +168,19 @@ function handleDeleteTask(event){
 }
 
 // Todo: create a function to handle dropping a task into a new status lane
-
+// when the user clicks a task card and moves it to another column, the specified task should change position 
 function handleDropEvent(event, ui) {
-    const taskId = ui.draggable[0].dataset.projectId;
+    const IdOfTask = ui.draggable[0].dataset.taskId;
+    const newTaskStatus = event.target.id;
 
-    const newTaskStatus = event.target.id
-    function handleDrop(event, ui) {
         for (let task of taskList) {
-            if (task.id === id) {
+            if (task.id === IdOfTask) {
                 task.taskStatus = newTaskStatus
             }
         }
-}
-}
+        localStorage.setItem('tasks', JSON.stringify(tasks))
+        renderTaskList()
+    }
  // when dropped in one of the swim-lanes change the taskStatus accordingly 
 //  event.target.id (todo, inprogress, done) -> (gets the location) use this to set the task.taskStatus = 
 // target the event that its dropped on and get it's id set the status of the task to the column its dropped on 
