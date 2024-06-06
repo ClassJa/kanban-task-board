@@ -12,6 +12,7 @@ let taskDescription = JSON.parse(localStorage.getItem("#taskDescription"));
 let toDoColumn = $('#to-do-column');
 let inProgressColumn = $('#in-progress-column');
 let doneColumn = $('#done-column')
+const deleteBtn = $('.deleteBtn')
 // const openModalBtn = $('[data-bs-target]')
 // const closeModalBtn = $('[data-x-button]')
 const datePicker = $('#taskDueDate')
@@ -76,7 +77,7 @@ function createTaskCard(task) {
     const cardBody = $('<div>').addClass('card-body')
     const cardDescription = $('<p>').addClass('task-description').text(task.desc)
     const cardDueDate = $('<p>').addClass('input-2').text(task.dueDate)
-    const cardDelete = $('<button>').text('Delete')
+    const cardDelete = $('<button>').addClass('deleteBtn').text('Delete')
     cardBody.append(cardDescription, cardDueDate)
     taskCard.append(cardHeader, cardBody, cardDelete)
 
@@ -151,12 +152,17 @@ function handleAddTask(event){
 
 
 // Todo: create a function to handle deleting a task
+
+deleteBtn.on('click', handleDeleteTask)
+
 function handleDeleteTask(event){
     event.preventDefault()
+
     const id = $(this).attr('data-project-id');
   // TODO: Loop through the projects array and remove the project with the matching id.
   for (let i = 0; i < taskList.length; i ++){
     if (taskList[i].id === event.id){
+        taskList.splice(taskList.indexOf(task), 1)
         task[i].id.val = ''
         task[i].title.val = ''
         task[i].desc.val = ''
