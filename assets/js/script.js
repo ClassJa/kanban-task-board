@@ -211,7 +211,7 @@ function handleDropEvent(event, ui) {
     const newTaskStatus = event.target.id;
 
         for (let task of taskList) {
-            if (task.id === IdOfTask) {
+            if (task.id === parseInt(IdOfTask)) {
                 task.taskStatus = newTaskStatus
             }
         }
