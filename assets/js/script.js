@@ -185,9 +185,28 @@ function handleDeleteTask(){
 
 $(document).on('click', '.deleteBtn', handleDeleteTask)
 
+function tasksInTaskList() {
+    let tasks = JSON.parse(localStorage.getItem('tasks'))
+
+    if (!tasks) {
+        tasks = []
+    }
+
+    return tasks
+}
+
+
+// function calculates what day it is, and shows it on screen 
+function displayDate() {
+    const date = dayjs().format('MMM DD, YYYY');
+    timeDisplayEl.text(date);
+  }
+
+
 // Todo: create a function to handle dropping a task into a new status lane
 // when the user clicks a task card and moves it to another column, the specified task should change position 
 function handleDropEvent(event, ui) {
+    taskList = tasksInTaskList()
     const IdOfTask = ui.draggable[0].dataset.taskId;
     const newTaskStatus = event.target.id;
 
