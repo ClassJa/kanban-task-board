@@ -1,10 +1,11 @@
 // ? Grab references to the important DOM elements.
 const timeDisplayEl = $('#time-display');
 const projectDisplayEl = $('#project-display');
-const projectFormEl = $('#task-form');
+const taskFormEl = $('#task-form');
 const projectNameInputEl = $('#task-title-input');
 const projectTypeInputEl = $('#project-type-input');
 const projectDateInputEl = $('#taskDueDate');
+const taskCardModal = $('#add-task-btn-main')
 
 // ? Helper function that displays the time, this is called every second in the setInterval function below.
 function displayTime() {
@@ -190,7 +191,7 @@ function handleDrop(event, ui) {
 }
 
 // ? Add event listener to the form element, listen for a submit event, and call the `handleProjectFormSubmit` function.
-projectFormEl.on('submit', handleProjectFormSubmit);
+taskFormEl.on('submit', handleProjectFormSubmit);
 
 // ? Because the cards are dynamically added to the screen, we have to use jQuery event delegation to listen for clicks on the added cards delete button.
 // ? We listen for a click on the parent element, and THEN check if the target of the click is the delete button. If it is, we call the `handleDeleteProject` function
@@ -216,3 +217,8 @@ $(document).ready(function () {
     drop: handleDrop,
   });
 });
+
+taskCardModal.on('click', function() {
+    // add logic for pop up modal
+    console.log("It works")
+})

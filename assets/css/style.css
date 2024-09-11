@@ -23,10 +23,13 @@ h6 {
 }
 
 /* Shared custom styles for headers */
-.custom-modal-header,
-.custom-card-header,
-.btn-custom {
+.custom-modal-header {
   background-color: var(--darkblue);
+  color: var(--light);
+}
+
+.btn-custom {
+  background-color: green;
   color: var(--light);
 }
 

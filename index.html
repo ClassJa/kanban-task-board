@@ -23,11 +23,15 @@
   </head>
   <body>
     <header class="p-5 mb-4 text-center header">
-      <h1>Project Tracker</h1>
-      <h2>
-        Current Time &amp; Date: <br />
-        <span id="time-display"></span>
-      </h2>
+      <h1>Task Board</h1>
+      <p>
+        A simple kanban board for task management
+      </p>
+      <div id="add-task-btn-main">
+        <button type="button" class="btn btn-custom">
+          Add Task
+        </button>
+      </div>
     </header>
     <main class="container-fluid">
       <div class="row">
@@ -40,22 +44,30 @@
             <form id="task-form">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
+                  <label>Task Title</label>
                   <input
                     id="task-title-input"
                     type="text"
                     class="form-control"
-                    placeholder="Task Title"
                     aria-label="Project Name"
                   />
                 </li>
                 <li class="list-group-item">
+                  <label>Task Due Date</label>
                   <input
-                    placeholder="Task Due Date"
                     autocomplete="off"
                     type="text"
                     class="form-control mb-3"
                     id="taskDueDate"
                   />
+                </li>
+                <li class="list-group-item">
+                  <label>Task Description</label>
+                  <textarea
+                    type="text"
+                    class="form-control mb-3"
+                    id="taskDescription">
+                  </textarea>
                 </li>
               </ul>
               <div class="card-footer">
