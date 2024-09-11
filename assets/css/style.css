@@ -1,162 +1,57 @@
+:root {
+  --light: #f6f6f6;
+  --darkblue: #2c3e50;
+  --lightblue: #3498db;
+  --red: #e74c3c;
+  --lightred: #f9eae7;
+  --lightyellow: #fff5d1;
+}
+
+/* Apply custom Google font */
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+/* Shared custom styles for headers */
+.custom-modal-header,
+.custom-card-header,
+.btn-custom {
+  background-color: var(--darkblue);
+  color: var(--light);
+}
+
+.btn-custom:hover {
+  color: var(--lightblue);
 }
 
 .swim-lanes {
   min-height: 60vh;
 }
 
-/* .task-card {
+.task-card {
   margin: 0 auto;
-
-} */
+}
 
 .task-card:hover {
   cursor: grab;
 }
 
-.modal-pop-up {
-  position: fixed;
-  top: 30%;
-  left: 35%;
-  height: 290px;
-  width: 350px;
-  border: 2px solid green;
-  border-radius: 7px;
-  z-index: 9999;
-  background-color: rgb(215, 215, 215);
-  max-width: 80%;
-  display: none;
-  /* justify-items: center; */
+
+/* style project rows based on status (late, due today) */
+.project-late {
+  background-color: var(--lightred);
 }
 
-.modal-header {
-  padding: 10px 20px;
-  display: flex;
-  border-bottom: 2px solid black;
-}
-
-.modal-header .title {
-  font-size: larger;
-  font-weight: bolder;
-
-}
-.modal-body {
-  position: relative;
-  top: 5%;
-}
-
-.modal-add-btn {
-  /* display: inline-block; */
-  /* justify-self: center; */
-
-  /* Debug how to get the submit button to be centered in its div container */
-}
-
-/* .x-button {
-  cursor: pointer
-} */
-
-.modal-header .x-button {
-  cursor: pointer
-  /* font-weight: bold;
-  font-size: medium; */
-}
-
-/* uncomment */
-/* .modal.active {
-  position: fixed;
-  top: 30%;
-  left: 35%;
-  height: 390px;
-  width: 350px;
-  border: 2px solid green;
-  border-radius: 7px;
-  z-index: 10;
-  background-color: rgb(192, 184, 184);
-  max-width: 80%;
-  display: block;
-} */
-
-/* .modal .not-active {
-  position: fixed;
-  top: 30%;
-  left: 35%;
-  height: 390px;
-  width: 350px;
-  border: 2px solid green;
-  border-radius: 7px;
-  z-index: 10;
-  background-color: rgb(192, 184, 184);
-  max-width: 80%;
-  display: none;
-} */
-
-
-.side-side {
-  display: flex;
-  justify-content: space-around;
-  /* justify-items: center; */
-  /* align-content: space-evenly; */
-
-}
-
-
-.addTaskBtn {
-  display: inline-block;
-}
-
-.title-text {
-  /* position: relative;
-  top: 80px; */
-}
-
-.due-date-text {
-
-}
-
-.titleBoxInput {
-  display: flex;
-  position: relative;
-  top: 20px;
-  height: 35px;
-  width: 140px;
-}
-
-
-.dueDateBoxInput {
-  display: flex;
-  position: relative;
-  top: 20px;
-  height: 35px;
-  width: 140px;
-}
-
-#task-description {
-  position: relative;
-  width: auto;
-  height: auto;
-}
-
-/* #overlay {
-  pointer-events: none;
-  background-color: rgba(red, green, blue, .5);
-}
-
-#overlay.active {
-  pointer-events: all;
-  opacity: 1;
-} */
-
-
-.task-card {
-  height: auto;
-  width: fit-content;
-  background-color: gray;
-  color: black;
-}
-
-.card-body {
-  
+.project-today {
+  background-color: var(--lightyellow);
 }
