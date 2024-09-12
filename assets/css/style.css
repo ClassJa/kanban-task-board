@@ -58,3 +58,12 @@ h6 {
 .project-today {
   background-color: var(--lightyellow);
 }
+
+#task-form-display {
+  /* display: none; */
+  
+}
+
+/* #project-display {
+  justify-content: center;
+} */

@@ -28,20 +28,20 @@
         A simple kanban board for task management
       </p>
       <div id="add-task-btn-main">
-        <button type="button" class="btn btn-custom">
+        <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#task-form-display">
           Add Task
         </button>
       </div>
     </header>
     <main class="container-fluid">
       <div class="row">
-        <div class="col-md col-xl-4">
+        <div class="col-md col-xl-4 " id="task-form-display">
           <!-- Add project form and instructions -->
-          <div class="card mb-3">
-            <h2 class="h4 card-header custom-card-header">Add Task</h2>
+          <div class="card mb-3 modal" >
+            <h2 class="h4 card-header custom-card-header modal-title">Add Task</h2>
             <div class="card-body">
             </div>
-            <form id="task-form">
+            <form id="task-form" class="modal-body">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                   <label>Task Title</label>
@@ -70,8 +70,8 @@
                   </textarea>
                 </li>
               </ul>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-custom">
+              <div class="card-footer modal-footer">
+                <button type="submit" class="btn btn-custom" data-bs-dismiss="modal" aria-label="Close">
                   Add Task
                 </button>
               </div>
@@ -81,7 +81,8 @@
 
         <div class="col-md col-xl-8">
           
-          <div id="project-display" class="row swim-lanes text-center justify-content-betwee">
+          <div id="project-display" class="row swim-lanes text-center ">
+            <!-- justify-content-betwee  (above div) -->
             <div class="col-12 col-lg-4 d-flex">
               <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
                 <div class="card-header bg-white">

@@ -219,8 +219,21 @@ $(document).ready(function () {
 });
 
 taskCardModal.on('click', function() {
-    var modalToggle = new bootstrap.Modal(document.getElementById('task-form'))
+    // var modalToggle = document.getElementById('task-form-display')
+    // modalToggle.setAttribute('display', 'block')
+    var modalToggle = new bootstrap.Modal(document.getElementById('task-form-display'))
     modalToggle.show()
+
+    // if(getComputedStyle(modalToggle).display === 'none') {
+    //     modalToggle.setAttribute('display', 'block')
+    // } else {
+    //     modalToggle.setAttribute('display', 'none')
+    // }
+
+    // modalToggle.setAttribute('display', 'block')
+    // var modalToggle = new bootstrap.Modal(document.getElementById('task-form-display'))
+    // modalToggle.show()
+   
     // add logic for pop up modal
-    console.log("It works")
+    // console.log("It works")
 })
