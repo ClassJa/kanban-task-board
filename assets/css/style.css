@@ -80,6 +80,10 @@ h6 {
   
 }
 
+#task-submit-btn {
+  display: flex;
+  justify-content: center;
+}
 /* #project-display {
   justify-content: center
 } */
