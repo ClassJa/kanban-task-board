@@ -35,47 +35,31 @@
     </header>
     <main class="container-fluid">
       <div class="row">
-        <div class="col-md col-xl-4 " id="task-form-display">
-          <!-- Add project form and instructions -->
-          <div class="card mb-3 modal" >
-            <h2 class="h4 card-header custom-card-header modal-title">Add Task</h2>
-            <div class="card-body">
-            </div>
-            <form id="task-form" class="modal-body">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <label>Task Title</label>
-                  <input
-                    id="task-title-input"
-                    type="text"
-                    class="form-control"
-                    aria-label="Project Name"
-                  />
-                </li>
-                <li class="list-group-item">
-                  <label>Task Due Date</label>
-                  <input
-                    autocomplete="off"
-                    type="text"
-                    class="form-control mb-3"
-                    id="taskDueDate"
-                  />
-                </li>
-                <li class="list-group-item">
-                  <label>Task Description</label>
-                  <textarea
-                    type="text"
-                    class="form-control mb-3"
-                    id="taskDescription">
-                  </textarea>
-                </li>
-              </ul>
-              <div class="card-footer modal-footer">
-                <button type="submit" class="btn btn-custom" data-bs-dismiss="modal" aria-label="Close">
-                  Add Task
-                </button>
+        <div class="modal fade" id="task-form-display" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addTaskLabel">Add Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-            </form>
+              <div class="modal-body">
+                <form id="task-form">
+                  <div class="mb-3">
+                    <label for="task-title-input" class="form-label">Task Title</label>
+                    <input type="text" class="form-control" id="task-title-input">
+                  </div>
+                  <div class="mb-3">
+                    <label for="taskDueDate" class="form-label">Task Due Date</label>
+                    <input type="text" class="form-control" id="taskDueDate">
+                  </div>
+                  <div class="mb-3">
+                    <label for="taskDescription" class="form-label">Task Description</label>
+                    <textarea class="form-control" id="taskDescription"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add Task</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
 

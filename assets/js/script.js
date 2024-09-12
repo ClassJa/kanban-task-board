@@ -221,8 +221,8 @@ $(document).ready(function () {
 taskCardModal.on('click', function() {
     // var modalToggle = document.getElementById('task-form-display')
     // modalToggle.setAttribute('display', 'block')
-    var modalToggle = new bootstrap.Modal(document.getElementById('task-form-display'))
-    modalToggle.show()
+    // var modalToggle = new bootstrap.Modal(document.getElementById('task-form-display'))
+    // modalToggle.show()
 
     // if(getComputedStyle(modalToggle).display === 'none') {
     //     modalToggle.setAttribute('display', 'block')
