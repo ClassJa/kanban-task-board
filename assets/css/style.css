@@ -71,11 +71,15 @@ h6 {
   background-color: green;
 }
 
+.row {
+  justify-content: center
+}
+
 #task-form-display {
   /* display: none; */
   
 }
 
 /* #project-display {
-  justify-content: center;
+  justify-content: center
 } */
