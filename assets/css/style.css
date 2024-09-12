@@ -49,6 +49,10 @@ h6 {
   cursor: grab;
 }
 
+.card-text1 {
+  color: white;
+}
+
 
 /* style project rows based on status (late, due today) */
 .project-late {
@@ -57,6 +61,14 @@ h6 {
 
 .project-today {
   background-color: var(--lightyellow);
+}
+
+.btn-primary {
+  background-color: green;
+}
+
+.btn-primary:hover {
+  background-color: green;
 }
 
 #task-form-display {

@@ -5,7 +5,7 @@ const taskFormEl = $('#task-form');
 const projectNameInputEl = $('#task-title-input');
 const projectTypeInputEl = $('#project-type-input');
 const projectDateInputEl = $('#taskDueDate');
-const taskCardModal = $('#add-task-btn-main')
+
 
 // ? Helper function that displays the time, this is called every second in the setInterval function below.
 function displayTime() {
@@ -41,7 +41,9 @@ function createProjectCard(project) {
     .attr('data-project-id', project.id);
   const cardHeader = $('<div>').addClass('card-header h4').text(project.name);
   const cardBody = $('<div>').addClass('card-body');
-  const cardDescription = $('<p>').addClass('card-text').text(project.type);
+  const cardDescription = $('<p>').addClass('card-text1').text(project.text);
+//   class = card-text
+//   project.type above
   const cardDueDate = $('<p>').addClass('card-text').text(project.dueDate);
   const cardDeleteBtn = $('<button>')
     .addClass('btn btn-danger delete')
@@ -140,14 +142,16 @@ function handleProjectFormSubmit(event) {
 
   // ? Read user input from the form
   const projectName = projectNameInputEl.val().trim();
-  const projectType = projectTypeInputEl.val(); // don't need to trim select input
+  const projectText = projectTypeInputEl.val()
+//   const projectType = projectTypeInputEl.val(); // don't need to trim select input
   const projectDate = projectDateInputEl.val(); // yyyy-mm-dd format
 
   const newProject = {
     // ? Here we use a Web API called `crypto` to generate a random id for our project. This is a unique identifier that we can use to find the project in the array. `crypto` is a built-in module that we can use in the browser and Nodejs.    
     id: crypto.randomUUID(),
     name: projectName,
-    type: projectType,
+    text: projectText,
+    // type: projectType,
     dueDate: projectDate,
     status: 'to-do',
   };
@@ -218,22 +222,4 @@ $(document).ready(function () {
   });
 });
 
-taskCardModal.on('click', function() {
-    // var modalToggle = document.getElementById('task-form-display')
-    // modalToggle.setAttribute('display', 'block')
-    // var modalToggle = new bootstrap.Modal(document.getElementById('task-form-display'))
-    // modalToggle.show()
 
-    // if(getComputedStyle(modalToggle).display === 'none') {
-    //     modalToggle.setAttribute('display', 'block')
-    // } else {
-    //     modalToggle.setAttribute('display', 'none')
-    // }
-
-    // modalToggle.setAttribute('display', 'block')
-    // var modalToggle = new bootstrap.Modal(document.getElementById('task-form-display'))
-    // modalToggle.show()
-   
-    // add logic for pop up modal
-    // console.log("It works")
-})
