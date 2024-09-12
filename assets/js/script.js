@@ -219,6 +219,8 @@ $(document).ready(function () {
 });
 
 taskCardModal.on('click', function() {
+    var modalToggle = new bootstrap.Modal(document.getElementById('task-form'))
+    modalToggle.show()
     // add logic for pop up modal
     console.log("It works")
 })
